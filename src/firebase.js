@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAtVP-v97p-kZpc01nir55VkmGc8NZTMVc",
-  authDomain: "okr-project-ac0ff.firebaseapp.com",
-  projectId: "okr-project-ac0ff",
-  storageBucket: "okr-project-ac0ff.appspot.com",
-  messagingSenderId: "110885897777",
-  appId: "1:110885897777:web:5f390920a52e1679477710"
+  apiKey: "AIzaSyCADWc3IuKoQiSKn5VhSG1cOoYbLOHwfj4",
+  authDomain: "okr-frontend.firebaseapp.com",
+  projectId: "okr-frontend",
+  storageBucket: "okr-frontend.appspot.com",
+  messagingSenderId: "746695881748",
+  appId: "1:746695881748:web:2194879ac4050657342301"
 };
 
 // Initialize Firebase

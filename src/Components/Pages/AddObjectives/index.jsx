@@ -47,7 +47,7 @@ const ObjectiveForm = () => {
         <br />
         <input
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={handleTitleChange}
           type="title"
           placeholder="title"
           id="title"
@@ -58,7 +58,7 @@ const ObjectiveForm = () => {
         <br />
         <input
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleDescriptionChange}
           type="description"
           placeholder="description"
           id="description"
@@ -69,7 +69,7 @@ const ObjectiveForm = () => {
         <br />
         <input
           value={keyName}
-          onChange={(e) => setKeyName(e.target.value)}
+          onChange={handleKeyNameChange}
           type="keyName"
           placeholder="Key Name"
           id="keyName"
@@ -80,7 +80,7 @@ const ObjectiveForm = () => {
         <br />
         <input
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={handleDateChange}
           type="date"
           placeholder="Date"
           id="date"

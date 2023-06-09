@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate  } from 'react-router-dom';
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate  = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
         signInWithEmailAndPassword(auth, email, pass)
         .then((useCredential) =>{
             console.log(useCredential)
+            navigate("/objectives")
         }).catch((error) => {
             console.log(error);
         })
