@@ -1,0 +1,36 @@
+header {
+    background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #F7944D);
+    display: flex;
+    padding: 20px;
+    min-height: 1%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  nav li:last-child {
+    margin-right: 0;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  nav a:hover {
+    background-color: #ddd;
+  }

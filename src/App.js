@@ -3,12 +3,16 @@ import './App.css';
 import { Login } from "./Components/Pages/Login"
 import { Signup } from "./Components/Pages/Signup"
 import AddObjectiveForm from "./Components/Pages/AddObjectives"
+import AddKeyResultForm from "./Components/Pages/AddKeyResults"
+import AddActionForm from "./Components/Pages/AddAction"
+import AddMeasurementForm from "./Components/Pages/AddMeasurement"
 import EditObjectiveForm from "./Components/Pages/EditObjective"
 import ObjectiveList from "./Components/Pages/ObjectiveList";
 import { BrowserRouter } from 'react-router-dom';
 import ObjectiveDetails from "./Components/Pages/ObjectiveDetails";
 import { Routes, Route } from "react-router-dom"
 import KeyDetails from "./Components/Pages/KeyDetails";
+import Header from "./Components/Atoms/Header";
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const toggleForm =(formName) => {
@@ -70,9 +74,16 @@ function App() {
     date: '2023-06-21',
   };
   return (
+    <div>
+      <BrowserRouter>
+    <div >
+    <Header />
+    
+    </div>
     <div className="App">
-    <BrowserRouter>
+    
     <Routes>
+      <Route exact path="/objectives" element={<ObjectiveList objectives={objectives}/>} />
       {
         currentForm === "login" ?  <Route path="/" element={ <Login onFormSwitch={toggleForm} /> } /> : <Route path="/" element={ <Signup onFormSwitch={toggleForm} /> } />
       }
@@ -82,9 +93,14 @@ function App() {
       <Route path="/objective-details/1" element={<ObjectiveDetails objective={objective}/>}></Route>
       <Route path="/objective-details/2" element={<ObjectiveDetails objective={objective2}/>}></Route>
       <Route path="/add-objective" element={<AddObjectiveForm/>}></Route>
+      <Route path="/add-keyresult" element={<AddKeyResultForm/>}></Route>
+      <Route path="/add-action" element={<AddActionForm/>}></Route>
+      <Route path="/add-measurement" element={<AddMeasurementForm/>}></Route>
       <Route path="/key/PROJECT-001" element={<KeyDetails keyInfo={keyInfo}/>}></Route>
       <Route path="/key/PROJECT-002" element={<KeyDetails keyInfo={keyInfo2}/>}></Route>
     </Routes>
+ 
+    </div>
     </BrowserRouter> 
     </div>
   );

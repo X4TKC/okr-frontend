@@ -1,25 +1,21 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+const AddObjective = () => {
+  const [name, setName] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
-const ObjectiveForm = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [keyName, setKeyName] = useState("");
-  const [date, setDate] = useState("");
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
   };
 
-  const handleKeyNameChange = (event) => {
-    setKeyName(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -27,70 +23,55 @@ const ObjectiveForm = () => {
 
     // Perform any additional validation or processing here
     // For this example, we'll just log the values to the console
-    console.log("Title:", title);
-    console.log("Description:", description);
-    console.log("Key Name:", keyName);
-    console.log("Date:", date);
+    console.log("Name:", name);
 
     // Clear the form fields after submitting
-    setTitle("");
-    setDescription("");
-    setKeyName("");
-    setDate("");
+    setName("");
   };
 
   return (
-    <div className="auth-form-container">
-      <h2>New Objective</h2>
-      <form className="objective-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">Title</label>
-        <br />
-        <input
-          value={title}
-          onChange={handleTitleChange}
-          type="title"
-          placeholder="title"
-          id="title"
-          name="title"
-        ></input>
-        <br />
-        <label htmlFor="description">Description</label>
-        <br />
-        <input
-          value={description}
-          onChange={handleDescriptionChange}
-          type="description"
-          placeholder="description"
-          id="description"
-          name="description"
-        ></input>
-        <br />
-        <label htmlFor="keyName">Key Name</label>
-        <br />
-        <input
-          value={keyName}
-          onChange={handleKeyNameChange}
-          type="keyName"
-          placeholder="Key Name"
-          id="keyName"
-          name="keyName"
-        ></input>
-        <br />
-        <label htmlFor="date">Date</label>
-        <br />
-        <input
-          value={date}
-          onChange={handleDateChange}
-          type="date"
-          placeholder="Date"
-          id="date"
-          name="date"
-        ></input>
-        <br />
-      </form>
-      <button type="submit">Add Objective</button>
+    <div>
+      <div className="auth-form-container">
+        <h2>New Objective Title</h2>
+        <div className="auth-form-container">
+          <label htmlFor="name">1. Define your objective:</label>
+          <small>
+            Clearly state your personal goal. For example, "Improve Physical
+            Fitness and Achieve a Healthy Body."
+          </small>
+        </div>
+        <form className="objective-form" onSubmit={handleSubmit}>
+          <label htmlFor="name">Name</label>
+          <br />
+          <input
+            value={name}
+            onChange={handleNameChange}
+            type="name"
+            placeholder="name"
+            id="name"
+            name="name"
+          ></input>
+          <br />
+          <label htmlFor="startDate">Start Date:</label>
+          <DatePicker
+            id="startDate"
+            selected={startDate}
+            onChange={handleStartDateChange}
+            dateFormat="dd/MM/yyyy"
+          />
+
+          <label htmlFor="endDate">End Date:</label>
+          <DatePicker
+            id="endDate"
+            selected={endDate}
+            onChange={handleEndDateChange}
+            dateFormat="dd/MM/yyyy"
+          />
+        </form>
+        <button type="submit">Add Objective title</button>
+      </div>
     </div>
   );
 };
 
-export default ObjectiveForm;
+export default AddObjective;
