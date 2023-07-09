@@ -1,0 +1,19 @@
+.objective-info {
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 2rem;
+}
+.description {
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 0.5rem;
+}
+.key-name{
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 0.5rem;
+    background-color: white;
+}
+.arrow-back {
+    display: flex;
+}

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+
+
 const AddMeasurement = () => {
   const [measurement, setMeasurement] = useState("");
 
@@ -17,10 +21,13 @@ const AddMeasurement = () => {
     // Clear the form fields after submitting
     setMeasurement("");
   };
+  const navigate = useNavigate();
 
   return (
     <div>
       <div className="auth-form-container">
+        
+       <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
         <h2>New Measurement</h2>
         <div className="auth-form-container">
           <label htmlFor="name">4. Set Measurements:</label>
@@ -49,7 +56,7 @@ const AddMeasurement = () => {
           ></input>
           <br />
         </form>
-        <button type="submit">Add measurement</button>
+        <button onClick={()=> navigate(-1)} type="submit">Add measurement</button>
       </div>
     </div>
   );

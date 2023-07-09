@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import { Link } from "react-router-dom";
 import AuthDetails from "../../Auth/AuthDetails";
 import "./index.css";
+
 const ObjectiveList = ({ objectives }) => {
   // Extract unique dates from objectives
   const objectiveDates = [
@@ -15,15 +16,18 @@ const ObjectiveList = ({ objectives }) => {
       {objectives.length === 0 ? (
         <p>No objectives available</p>
       ) : (
-        <div>
+        <div className="body-calendar-objectives">
+          <div className="calendar-section">
           <h3 className="calendar-title">Calendar</h3>
-          <Calendar
+          <Calendar className={['react-calendar']}
             tileClassName={({ date }) =>
               objectiveDates.includes(date.toISOString().slice(0, 10))
                 ? "highlight"
                 : ""
             }
           />
+          </div>
+          <div>
           <h3 className="objectives-title">Objectives</h3>
           <ul className="objectives">
             {objectives.map((objective) => (
@@ -46,6 +50,7 @@ const ObjectiveList = ({ objectives }) => {
               </li>
             ))}
           </ul>
+          </div>
         </div>
       )}
       <Link to="/add-objective" className="add-objective-button">

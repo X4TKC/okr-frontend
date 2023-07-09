@@ -1,39 +1,47 @@
 .objective-list {
     font-family: Arial, sans-serif;
     margin: 20px;
+   
+    flex-direction: row;
+    
   }
   
   .list-title {
-    color: #333;
+    color: white;
     font-size: 24px;
   }
   
   .calendar-title {
-    color: #555;
+    color: white;
     font-size: 18px;
     margin-bottom: 10px;
   }
   
   .objectives-title {
-    color: #555;
+    color: white;
     font-size: 18px;
     margin-top: 20px;
   }
   
   .objectives {
+    border: 1px solid white;
+    border-radius: 10px;
     list-style-type: none;
-    padding: 0;
+    padding: 1rem;
+    margin: 2rem;
   }
   
   .objective-item {
+    border: 1px solid white;
+    border-radius: 10px;
     background-color: #f8f8f8;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 1rem;
+    
+    margin-bottom: 1rem;
   }
   
   .objective-title {
-    color: #333;
+    color: #cd645b;
     font-size: 20px;
     margin-bottom: 5px;
   }
@@ -56,10 +64,10 @@
   
   .add-objective-button {
     color: #fff;
-    background-color: #007bff;
-    border: none;
+    background-color: #007bff00;
+    border: 1px solid white;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     text-decoration: none;
     display: inline-block;
     margin-top: 20px;
@@ -68,4 +76,23 @@
   
   .add-objective-button:hover {
     background-color: #0056b3;
+  }
+
+  .calendar-section {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 1rem;
+  }
+
+  .react-calendar__navigation {
+    background-color: white;
+  }
+  .react-calendar__month-view__weekdays__weekday{
+    background-color: white;
+    color:black;
+  }
+  .body-calendar-objectives {
+    display: flex;
+    flex-direction: row;
   }

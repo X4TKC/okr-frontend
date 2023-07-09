@@ -92,7 +92,7 @@ function App() {
       <Route path="/edit-objective/2" element={<EditObjectiveForm objective={objective2} onSave={handleSave} onDelete={handleDelete} />}></Route>
       <Route path="/objective-details/1" element={<ObjectiveDetails objective={objective}/>}></Route>
       <Route path="/objective-details/2" element={<ObjectiveDetails objective={objective2}/>}></Route>
-      <Route path="/add-objective" element={<AddObjectiveForm/>}></Route>
+      <Route path="/add-objective" element={<AddObjectiveForm objectives={objectives}/>}></Route>
       <Route path="/add-keyresult" element={<AddKeyResultForm/>}></Route>
       <Route path="/add-action" element={<AddActionForm/>}></Route>
       <Route path="/add-measurement" element={<AddMeasurementForm/>}></Route>
