@@ -1,39 +1,74 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import './index.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getObjectiveById } from "../../../Services/objectiveService";
 
 
-const ObjectiveDetails = ({ objective }) => {
+const ObjectiveDetails = () => {
   const navigate = useNavigate();
+  const urlParam = useParams();
   const handleKeyNameClick = () => {
     // Navigate to the page with the information of the key
-    navigate(`/key/${objective.keyName}`);
+   // navigate(`/key/${objective.keyName}`);
   };
+
+  console.log(urlParam)
+  const queryClient = useQueryClient()
+
+  // Queries
+  const  { data, isSuccess, isFetching, isLoading, isError }  = useQuery(
+    { 
+    queryKey: ['objective'], 
+    queryFn: () => getObjectiveById(urlParam.id)  //USEPARAMS
+    })
+
+
+
+
+
+
   return (
     <>
     
     <div className="objective-info">
-      <div className="arrow-back">
+      <div className="top-buttons">
           <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
+          <div className="edit-button">
+            <Link to={`/edit-objective/${urlParam.id}`} className="edit-link-button" >Edit </Link>
+          </div>
+      
       </div>
-  
       <h2>Objective Details</h2>
-      <h3>{objective.title}</h3>
-      <div className="description">
-        <p>{objective.description}</p>
+      
+      <div className="name">
+        <p>{data?.data.name}</p>
       </div>
-      <div className="key-section">
-          <p className="key-name"
-            onClick={handleKeyNameClick}
-            style={{ cursor: "pointer", color: "blue" }}
-          >
-            Key Name: {objective.keyName}
-          </p>
-          <button onClick={()=> navigate("/add-keyresult")}>Add new Key +</button>
+      <div className="key-section" >
+
+        { isSuccess &&  data?.data.keyResultList && (
+          data?.data.keyResultList.map((keyItem)=>(
+         
+            <div key={keyItem.id}>
+              <div className="key-name" onClick={handleKeyNameClick} >
+                <h5 className="key-title">{keyItem.id}</h5>
+                
+                <p> {keyItem.description} </p>
+                
+                <button nClick={()=> navigate("/add-keyresult")}>See details </button>
+              </div>
+              
+            </div>
+            
+          ))
+          
+         
+        )}
+           <button onClick={()=> navigate("/add-keyresult")}>Add new Key +</button>
       </div>
       
-      <p>Date: {objective.date}</p>
+      <p>Date: {data?.data.dateStart}</p>
     </div>
     </>
   );

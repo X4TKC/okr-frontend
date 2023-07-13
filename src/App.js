@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import { Login } from "./Components/Pages/Login"
 import { Signup } from "./Components/Pages/Signup"
@@ -13,7 +13,23 @@ import ObjectiveDetails from "./Components/Pages/ObjectiveDetails";
 import { Routes, Route } from "react-router-dom"
 import KeyDetails from "./Components/Pages/KeyDetails";
 import Header from "./Components/Atoms/Header";
+import { User } from "./Components/Pages/Users";
+import { getUserById } from "./Services/userService";
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+
+
 function App() {
+
+  const queryClient = new QueryClient()
+
   const [currentForm, setCurrentForm] = useState('login');
   const toggleForm =(formName) => {
     setCurrentForm(formName);
@@ -73,36 +89,51 @@ function App() {
     ],
     date: '2023-06-21',
   };
+
+
+
+  const [objectivesList,setObjectivesList]= useState([])
+  
+  useEffect( () =>  {
+      const asyncFn = async () => { setObjectivesList(await getUserById("user_1")) };
+      asyncFn();
+     
+  },[])
   return (
-    <div>
+    <>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-    <div >
-    <Header />
     
-    </div>
-    <div className="App">
-    
-    <Routes>
-      <Route exact path="/objectives" element={<ObjectiveList objectives={objectives}/>} />
-      {
-        currentForm === "login" ?  <Route path="/" element={ <Login onFormSwitch={toggleForm} /> } /> : <Route path="/" element={ <Signup onFormSwitch={toggleForm} /> } />
-      }
-      <Route path="/objectives" element={<ObjectiveList objectives={objectives}/>}></Route>
-      <Route path="/edit-objective/1" element={<EditObjectiveForm objective={objective} onSave={handleSave} onDelete={handleDelete} />}></Route>
-      <Route path="/edit-objective/2" element={<EditObjectiveForm objective={objective2} onSave={handleSave} onDelete={handleDelete} />}></Route>
-      <Route path="/objective-details/1" element={<ObjectiveDetails objective={objective}/>}></Route>
-      <Route path="/objective-details/2" element={<ObjectiveDetails objective={objective2}/>}></Route>
-      <Route path="/add-objective" element={<AddObjectiveForm objectives={objectives}/>}></Route>
-      <Route path="/add-keyresult" element={<AddKeyResultForm/>}></Route>
-      <Route path="/add-action" element={<AddActionForm/>}></Route>
-      <Route path="/add-measurement" element={<AddMeasurementForm/>}></Route>
-      <Route path="/key/PROJECT-001" element={<KeyDetails keyInfo={keyInfo}/>}></Route>
-      <Route path="/key/PROJECT-002" element={<KeyDetails keyInfo={keyInfo2}/>}></Route>
-    </Routes>
- 
-    </div>
-    </BrowserRouter> 
-    </div>
+          <Header />
+          <div className="App">
+          
+          <Routes>
+            <Route exact path="/objectives" element={<ObjectiveList />} />
+            {
+              currentForm === "login" ?  <Route path="/" element={ <Login onFormSwitch={toggleForm} /> } /> : <Route path="/" element={ <Signup onFormSwitch={toggleForm} /> } />
+            }
+            <Route path="/objectives" element={<ObjectiveList/>}></Route>
+            <Route path="/edit-objective/1" element={<EditObjectiveForm objective={objective} onSave={handleSave} onDelete={handleDelete} />}></Route>
+            <Route path="/edit-objective/2" element={<EditObjectiveForm objective={objective2} onSave={handleSave} onDelete={handleDelete} />}></Route>
+            <Route path="/edit-objective/:id" element={<EditObjectiveForm onSave={handleSave} onDelete={handleDelete} />}></Route>
+
+            
+            <Route path="/objective-details/1" element={<ObjectiveDetails objective={objective}/>}></Route>
+            <Route path="/objective-details/:id" element={<ObjectiveDetails/>}></Route>
+            <Route path="/objective-details/2" element={<ObjectiveDetails objective={objective2}/>}></Route>
+            <Route path="/add-objective" element={<AddObjectiveForm objectives={objectives}/>}></Route>
+            <Route path="/add-keyresult" element={<AddKeyResultForm/>}></Route>
+            <Route path="/add-action" element={<AddActionForm/>}></Route>
+            <Route path="/add-measurement" element={<AddMeasurementForm/>}></Route>
+            <Route path="/key/PROJECT-001" element={<KeyDetails keyInfo={keyInfo}/>}></Route>
+            <Route path="/key/PROJECT-002" element={<KeyDetails keyInfo={keyInfo2}/>}></Route>
+            <Route path="/user" element={<User/>}/>
+          </Routes>
+      
+          </div>
+      </BrowserRouter> 
+    </QueryClientProvider>
+    </>
   );
 }
 

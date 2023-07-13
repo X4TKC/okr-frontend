@@ -3,17 +3,60 @@
     border: 1px solid white;
     padding: 2rem;
 }
-.description {
+.name {
     border-radius: 10px;
     border: 1px solid white;
     padding: 0.5rem;
 }
 .key-name{
+    margin:auto;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    flex-direction: column;
+    color:white;
+   
+    max-height: max-content;
+  
+   
+}
+
+.key-title {
+    align-self: flex-start;
+    padding-left: 0rem;
+}
+
+
+.key-section {
+    margin: auto;
+    display: flex;
+    padding: 2rem;
+    max-width: max-content;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.top-buttons {
+    display: flex;
+    flex-direction: horizontal ;
+    justify-items: end;
+    
+}
+
+.edit-link-button {
     border-radius: 10px;
     border: 1px solid white;
     padding: 0.5rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.149);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    
 }
-.arrow-back {
+.edit-button {
+    margin-left: auto;
     display: flex;
+   
 }

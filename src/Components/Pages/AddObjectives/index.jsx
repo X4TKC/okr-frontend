@@ -4,14 +4,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./index.css";
 import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { addObjective } from "../../../Services/objectiveService";
 
 
 const AddObjective = ({objectives}) => {
+
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [nextSection, setNextSection] = useState(false);
+
   const navigate =useNavigate()
+
   const handleStartDateChange = (date) => {
     setStartDate(date);
   };
@@ -24,19 +29,37 @@ const AddObjective = ({objectives}) => {
     setName(event.target.value);
   };
 
+  const queryClient = useQueryClient()
+
+
+
+
+  const mutation = useMutation({
+    mutationFn: addObjective,
+    onSuccess: () => {
+      
+      queryClient.invalidateQueries({ queryKey: ['addObj'] })
+    }
+  })
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Perform any additional validation or processing here
     // For this example, we'll just log the values to the console
-    console.log("Name:", name);
-
-    // Clear the form fields after submitting
-    setName("");
+    console.log("Name:", name, startDate, endDate);
+    mutation.mutate({
+      id:"AA",
+      name: name,
+      keyResultList: [],
+      dateStart: startDate,
+      dateEnd: endDate,
+      userId: "user_1",
+    })
+   
     navigate("/objectives");
     
   };
-
   return (
     <>
   
