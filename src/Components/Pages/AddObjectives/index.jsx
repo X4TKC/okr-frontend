@@ -49,12 +49,12 @@ const AddObjective = ({objectives}) => {
     // For this example, we'll just log the values to the console
     console.log("Name:", name, startDate, endDate);
     mutation.mutate({
-      id:"AA",
+     
       name: name,
       keyResultList: [],
       dateStart: startDate,
       dateEnd: endDate,
-      userId: "user_1",
+      userId: "user_1", //TO BE REPLACED WITH GLOBAL FOR USER SESSION
     })
    
     navigate("/objectives");
