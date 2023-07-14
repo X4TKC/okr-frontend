@@ -3,12 +3,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.css";
 import Modal from "../components/Modal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addObjective } from "../../../Services/objectiveService";
 
 
-const AddObjective = ({objectives}) => {
+const AddObjective = () => {
 
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState(null);
@@ -16,6 +16,8 @@ const AddObjective = ({objectives}) => {
   const [nextSection, setNextSection] = useState(false);
 
   const navigate =useNavigate()
+  const urlParam = useParams()
+
 
   const handleStartDateChange = (date) => {
     setStartDate(date);
@@ -47,16 +49,18 @@ const AddObjective = ({objectives}) => {
     event.preventDefault();
 
     // For this example, we'll just log the values to the console
-    console.log("Name:", name, startDate, endDate);
     mutation.mutate({
-     
       name: name,
       keyResultList: [],
       dateStart: startDate,
       dateEnd: endDate,
-      userId: "user_1", //TO BE REPLACED WITH GLOBAL FOR USER SESSION
+      userId: urlParam.userId      , //TO BE REPLACED WITH GLOBAL FOR USER SESSION
     })
    
+    setName("")
+    setEndDate("")
+    setStartDate("")
+
     navigate("/objectives");
     
   };
@@ -85,7 +89,7 @@ const AddObjective = ({objectives}) => {
                 placeholder="Name"
                 id="name"
                 name="name"
-                
+                required
               ></input>
             </div>
             
@@ -97,7 +101,7 @@ const AddObjective = ({objectives}) => {
                 selected={startDate}
                 onChange={handleStartDateChange}
                 dateFormat="dd/MM/yyyy"
-               
+                required
               />
             </div>
               
@@ -109,6 +113,7 @@ const AddObjective = ({objectives}) => {
                 selected={endDate}
                 onChange={handleEndDateChange}
                 dateFormat="dd/MM/yyyy"
+                required
               />
             </div>
               

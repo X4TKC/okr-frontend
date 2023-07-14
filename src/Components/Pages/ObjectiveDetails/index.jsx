@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import './index.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getObjectiveById } from "../../../Services/objectiveService";
+import { deleteObjective, getObjectiveById } from "../../../Services/objectiveService";
 
 
 const ObjectiveDetails = () => {
@@ -13,6 +13,16 @@ const ObjectiveDetails = () => {
     // Navigate to the page with the information of the key
    // navigate(`/key/${objective.keyName}`);
   };
+
+
+  const handleDelete  = () => {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      console.log(urlParam.id)
+      deleteObjective(urlParam.id)
+     
+      navigate(-1);
+    }
+  }
 
   console.log(urlParam)
   const queryClient = useQueryClient()
@@ -37,6 +47,9 @@ const ObjectiveDetails = () => {
           <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
           <div className="edit-button">
             <Link to={`/edit-objective/${urlParam.id}`} className="edit-link-button" >Edit </Link>
+          </div>
+          <div >
+            <button onClick={handleDelete} className="delete-button">Delete</button>
           </div>
       
       </div>

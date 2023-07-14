@@ -1,51 +1,64 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getObjectiveById, updateObjective } from '../../../Services/objectiveService';
 
-const EditObjectiveForm = ({ objective, onSave, onDelete }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [keyName, setKeyName] = useState('');
-  const [date, setDate] = useState('');
+const EditObjectiveForm = ( ) => {
+  const [name, setName] = useState();
+  const [dateStart, setDateStart] = useState();
+  const [dateEnd, setDateEnd] = useState();
+  const urlParam = useParams();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient()
+
+  const  { data, isSuccess, isFetching, isLoading, isError }  = useQuery(
+  { 
+    
+  queryKey: ['objectiveEdit'], 
+  queryFn: () => getObjectiveById(urlParam.id)  //USEPARAMS
+  })
+
+  
+const mutation = useMutation({
+  mutationFn: updateObjective,
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['editObj'] })
+  }
+})
 
   useEffect(() => {
     // Update the form fields with the objective values when it changes
-    setTitle(objective.title);
-    setDescription(objective.description);
-    setKeyName(objective.keyName);
-    setDate(objective.date);
-  }, [objective]);
+    setName(data?.data.name);
+ 
+    setDateStart(data?.data.dateStart.substring(0, 10));
+    setDateEnd(data?.data.dateEnd.substring(0, 10));
+  }, [data]);
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
+  const handleDateStartChange = (event) => {
+    setDateStart(event.target.value);
   };
 
-  const handleKeyNameChange = (event) => {
-    setKeyName(event.target.value);
-  };
-
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
+  const handleDateEndChange = (event) => {
+    setDateEnd(event.target.value);
   };
 
 const handleSubmit = (event) => {
   event.preventDefault();
-
-  const confirmSave = window.confirm('Are you sure you want to save changes to this objective?');
-  if (confirmSave) {
-    // Create an updated objective object
-    const updatedObjective = {
-      ...objective,
-      title,
-      description,
-      keyName,
-      date
-    };
-
-    // Call the onSave callback with the updated objective
-    onSave(updatedObjective);
+  if ( window.confirm('Are you sure you want to save changes to this objective?')) {
+    
+    mutation.mutate({
+      id: urlParam.id,
+      name:name,
+      keyResultList:data?.data.keyResultList,
+      dateStart: dateStart,
+      dateEnd: dateEnd,
+      userId: data?.data.userId
+    });
+    navigate(-1);
   }
 };
 
@@ -53,7 +66,7 @@ const handleDelete = () => {
   const confirmDelete = window.confirm('Are you sure you want to delete this objective?');
   if (confirmDelete) {
     // Call the onDelete callback with the objective ID or any other identifier
-    onDelete(objective.id);
+    //onDelete(data.id);
   }
 };
   
@@ -65,45 +78,39 @@ const handleDelete = () => {
       <label htmlFor="title">Title</label>
         <br />
         <input
-          value={title}
-          onChange={handleTitleChange}
+          value={name}
+          onChange={handleNameChange}
           type="title"
-          placeholder="title"
-          id="title"
-          name="title"
+          placeholder="name"
+          id="name"
+          name="name"
+          required
         ></input>
       <br />
-   <label htmlFor="description">Description</label>
+   <label htmlFor="description">Start Date</label>
         <br />
         <input
-          value={description}
-          onChange={handleDescriptionChange}
-          type="description"
-          placeholder="description"
-          id="description"
-          name="description"
-        ></input>
-        <br />
-        <label htmlFor="keyName">Key Name</label>
-        <br />
-        <input
-          value={keyName}
-          onChange={handleKeyNameChange}
-          type="keyName"
-          placeholder="Key Name"
-          id="keyName"
-          name="keyName"
-        ></input>
-        <br />
-        <label htmlFor="date">Date</label>
-        <br />
-        <input
-          value={date}
-          onChange={handleDateChange}
+          value={dateStart}
+          onChange={handleDateStartChange}
           type="date"
-          placeholder="Date"
-          id="date"
-          name="date"
+          placeholderText="Start Date"
+          id="startDate"
+          name="startDate"
+          required
+        ></input>
+        <br />
+        
+    
+        <label htmlFor="date">End Date</label>
+        <br />
+        <input
+          value={dateEnd}
+          onChange={handleDateEndChange}
+          type="date"
+          placeholderText="End Date"
+          id="endDate"
+          name="endDate"
+          required
         ></input>
         <br />
       <button type="submit">Save Changes</button>
