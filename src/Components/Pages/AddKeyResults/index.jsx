@@ -1,28 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import './index.css'
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AddKey } from "../../../Services/keyService";
 
 const AddKeyResults = () => {
   const [keyresult, setKeyResult] = useState("");
+  const [objId, setObjId] = useState("");
+  const urlParam = useParams();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient()
+
 
   const handleKeyResultChange = (event) => {
     setKeyResult(event.target.value);
   };
 
+
+
+
+  useEffect(()=> {
+    setObjId(urlParam.objId)
+    console.log( 'sjsjs', objId)
+  }, [])
+
+
+  const mutation = useMutation({
+    mutationFn: AddKey,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['addKey'] })
+    }, onError: () => {
+      console.log(keyresult, objId)
+    }
+  })
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Perform any additional validation or processing here
-    // For this example, we'll just log the values to the console
     console.log("KeyResult:", keyresult);
 
+    mutation.mutate({
+     
+      description: keyresult,
+      objectiveId:objId,
+      action: "",
+      measurement: ""  
+
+   
+    })
+   
     // Clear the form fields after submitting
-    setKeyResult("");
+    //setKeyResult("");
+    navigate(`/objective-details/${objId}`)
   }; 
 
-  const navigate = useNavigate();
 
   return (
     <div>
@@ -44,15 +77,19 @@ const AddKeyResults = () => {
           <input
             value={keyresult}
             onChange={handleKeyResultChange}
-            type="keyresult"
+            type="text"
             placeholder="Reduce body fat
             percentage by 5%"
             id="keyresult"
             name="keyresult"
           ></input>
           <br />
+          <div>
+          <button type="submit">Add key result</button>
+          </div>
+         
         </form>
-        <button onClick={()=> navigate(-1)} type="submit">Add key result</button>
+        
       </div>
     </div>
   );

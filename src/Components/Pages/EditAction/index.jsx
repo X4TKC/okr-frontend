@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getKeytById, updateKey } from "../../../Services/keyService";
 
-const AddAction = () => {
+const EditAction = () => {
   const [action, setAction] = useState("");
   const queryClient = useQueryClient()
   const urlParam = useParams();
@@ -20,7 +20,7 @@ const AddAction = () => {
   const mutation = useMutation({
     mutationFn: updateKey,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['AddAction'] })
+      queryClient.invalidateQueries({ queryKey: ['EditAction'] })
     }
   })
 
@@ -52,22 +52,8 @@ const AddAction = () => {
     <div>
       <div className="auth-form-container">
       <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
-        <h2>New Action</h2>
-        <div className="details-container">
-          <label htmlFor="action">
-            3. Define Actions: Identify the actions you need to take to achieve
-            each key result. For example:
-          </label>
-          <small>
-            Follow a balanced diet and engage in regular physical activity to
-            reduce body fat percentage. Engage in aerobic exercises (running,
-            cycling, swimming) for at least 30 minutes, five times a week to
-            increase cardiovascular endurance. Incorporate strength training
-            exercises into your routine to improve strength and muscle tone.
-            Include regular stretching exercises and mobility drills to enhance
-            flexibility and mobility.
-          </small>
-        </div>
+        <h2>Edit Action</h2>
+   
         <form className="objective-form" onSubmit={handleSubmit}>
           <label htmlFor="action">Action</label>
           <br />
@@ -80,7 +66,7 @@ const AddAction = () => {
       
           ></input>
           <br />
-          <button className="add-button"  type="submit">Add action</button>
+          <button className="add-button"  type="submit">Save action</button>
 
         </form>
       </div>
@@ -88,4 +74,4 @@ const AddAction = () => {
   );
 };
 
-export default AddAction;
+export default EditAction;

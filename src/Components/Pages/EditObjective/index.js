@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getObjectiveById, updateObjective } from '../../../Services/objectiveService';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const EditObjectiveForm = ( ) => {
   const [name, setName] = useState();
@@ -73,6 +74,7 @@ const handleDelete = () => {
 
   return (
     <div className="auth-form-container">
+        <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
         <h2>Edit Objective</h2>
     <form className="objective-form" onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>

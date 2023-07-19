@@ -6,7 +6,7 @@ import Modal from "../components/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addObjective } from "../../../Services/objectiveService";
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const AddObjective = () => {
 
@@ -69,7 +69,9 @@ const AddObjective = () => {
   
 
       <div>
+    
       <div className="auth-form-container">
+      <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
         <h2>New Objective Title</h2>
         <div className="auth-form-container definition">
           <label htmlFor="name">1. Define your objective:</label>
