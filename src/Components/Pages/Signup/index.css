@@ -1,0 +1,11 @@
+.auth-form-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}

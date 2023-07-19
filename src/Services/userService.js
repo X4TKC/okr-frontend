@@ -8,7 +8,7 @@ export const getUsers = async () => {
 };
 
 export const addUser = async (user) => {
-  return await API.post("/User", user);
+  return await API.post("/User/create", user);
 };
 
 export const getUserById = async (id) => {
