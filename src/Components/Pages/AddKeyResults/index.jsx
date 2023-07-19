@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import './index.css'
+
 const AddKeyResults = () => {
   const [keyresult, setKeyResult] = useState("");
 
@@ -16,11 +20,14 @@ const AddKeyResults = () => {
 
     // Clear the form fields after submitting
     setKeyResult("");
-  };
+  }; 
+
+  const navigate = useNavigate();
 
   return (
     <div>
       <div className="auth-form-container">
+      <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
         <h2>New Key Result</h2>
         <div className="auth-form-container">
           <label htmlFor="keyresult">2. Identify Key Results:</label>
@@ -45,7 +52,7 @@ const AddKeyResults = () => {
           ></input>
           <br />
         </form>
-        <button type="submit">Add key result</button>
+        <button onClick={()=> navigate(-1)} type="submit">Add key result</button>
       </div>
     </div>
   );

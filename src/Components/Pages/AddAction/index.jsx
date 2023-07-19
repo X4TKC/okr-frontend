@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
+import './index.css'
+import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+
 const AddAction = () => {
   const [action, setAction] = useState("");
 
@@ -17,12 +21,14 @@ const AddAction = () => {
     // Clear the form fields after submitting
     setAction("");
   };
+  const navigate = useNavigate();
 
   return (
     <div>
       <div className="auth-form-container">
+      <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
         <h2>New Action</h2>
-        <div className="auth-form-container">
+        <div className="details-container">
           <label htmlFor="action">
             3. Define Actions: Identify the actions you need to take to achieve
             each key result. For example:
@@ -50,7 +56,7 @@ const AddAction = () => {
           ></input>
           <br />
         </form>
-        <button type="submit">Add action</button>
+        <button className="add-button" onClick={()=> navigate(-1)}  type="submit">Add action</button>
       </div>
     </div>
   );
