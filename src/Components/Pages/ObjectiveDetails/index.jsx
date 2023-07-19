@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import './index.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getObjectiveById } from "../../../Services/objectiveService";
+import { deleteObjective, getObjectiveById } from "../../../Services/objectiveService";
 
 
 const ObjectiveDetails = () => {
@@ -14,7 +14,16 @@ const ObjectiveDetails = () => {
    // navigate(`/key/${objective.keyName}`);
   };
 
-  console.log(urlParam)
+
+  const handleDelete  = () => {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      //console.log(urlParam.id)
+      deleteObjective(urlParam.id)
+      navigate(-1);
+    }
+  }
+
+  //console.log(urlParam)
   const queryClient = useQueryClient()
 
   // Queries
@@ -34,9 +43,12 @@ const ObjectiveDetails = () => {
     
     <div className="objective-info">
       <div className="top-buttons">
-          <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
+          <ArrowBackIcon onClick={()=> navigate("/objectives")}></ArrowBackIcon>
           <div className="edit-button">
             <Link to={`/edit-objective/${urlParam.id}`} className="edit-link-button" >Edit </Link>
+          </div>
+          <div >
+            <button onClick={handleDelete} className="delete-button">Delete</button>
           </div>
       
       </div>
@@ -52,11 +64,10 @@ const ObjectiveDetails = () => {
          
             <div key={keyItem.id}>
               <div className="key-name" onClick={handleKeyNameClick} >
-                <h5 className="key-title">{keyItem.id}</h5>
-                
+                {/*<h5 className="key-title">{keyItem.id}</h5> */}
                 <p> {keyItem.description} </p>
                 
-                <button nClick={()=> navigate("/add-keyresult")}>See details </button>
+                <button onClick={()=> navigate(`/key-details/${keyItem.id}`)}>See details </button>
               </div>
               
             </div>
@@ -65,7 +76,7 @@ const ObjectiveDetails = () => {
           
          
         )}
-           <button onClick={()=> navigate("/add-keyresult")}>Add new Key +</button>
+           <button onClick={()=> navigate(`/add-keyresult/${urlParam.id}`)}>Add new Key +</button>
       </div>
       
       <p>Date: {data?.data.dateStart}</p>

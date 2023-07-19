@@ -5,3 +5,14 @@
    padding: 1rem;
    gap:1rem
 }
+.key-edit-action-measurement {
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    
+}
+.edit-icon{
+    margin-top: 1.2rem;
+}

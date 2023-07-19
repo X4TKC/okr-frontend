@@ -6,17 +6,17 @@ export const getActions = async () => {
 };
 
 export const AddAction = async (action) => {
-  return await API.post("/action", action);
+  return await API.post("/Action/create", action);
 };
 
 export const getActiontById = async (id) => {
-  return await API.get(`/action/${id}`);
+  return await API.get(`Action/get?id=${id}`);
 };
 
 export const updateAction= async(action) => {
-  return await API.put(`/action/${action.id}`, action)
+  return await API.put("/Action/update", action)
 };
 
 export const deleteAction= async(action) => {
-  return await API.delete(`/action/${action.id}`)
+  return await API.delete(`/Action/delete?id=${action.id}`)
 };

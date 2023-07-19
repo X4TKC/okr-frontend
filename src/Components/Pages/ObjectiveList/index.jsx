@@ -8,20 +8,7 @@ import { getUserById } from "../../../Services/userService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const ObjectiveList = ( ) => {
-  // Extract unique dates from objectives
-{  /*const objectiveDates = [
-    ...new Set(objectives.map((objective) => objective.date.slice(0, 10))),
-  ];*/}
 
-  const [objectives, setObjectives] = useState();
-/*
-  useEffect(()=> {
-
-    const asyncFn = async () => { await setObjectives(objectiv) };
-    asyncFn();
-    console.log("skjdksd", typeof( objectiv)) 
-  },[])
-*/
 
   const queryClient = useQueryClient()
 
@@ -29,17 +16,8 @@ const ObjectiveList = ( ) => {
   const  { data, isSuccess, isFetching, isLoading, isError }  = useQuery(
     { 
     queryKey: ['objectives'], 
-    queryFn: () => getUserById("user_1") 
+    queryFn: () => getUserById(data?.id) 
     })
-/*
-  // Mutations
-  const mutation = useMutation({
-    mutationFn: postTodo,
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['todos'] })
-    },
-  })*/
 
 
   return (
@@ -51,7 +29,7 @@ const ObjectiveList = ( ) => {
       ) }
       { isSuccess  && data?.objectiveList &&
       (
-        console.log(data?.objectiveList),
+  
         <div className="body-calendar-objectives">
           <div className="calendar-section">
           <h3 className="calendar-title">Calendar</h3>
@@ -67,7 +45,7 @@ const ObjectiveList = ( ) => {
           <h3 className="objectives-title">Objectives</h3>
           <ul className="objectives">
             {data?.objectiveList.map((objective) => (
-              console.log(objective,"AA"),
+              
 
               <li key={objective.id} className="objective-item">
                 {<h3 className="objective-title">{objective.name}</h3>}
@@ -92,7 +70,7 @@ const ObjectiveList = ( ) => {
           </div>
         </div>
       )}
-      <Link to="/add-objective" className="add-objective-button">
+      <Link to={`/add-objective/${data?.id}`} className="add-objective-button">
         Add New Objective
       </Link>
       <AuthDetails />

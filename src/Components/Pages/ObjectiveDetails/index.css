@@ -49,14 +49,29 @@
 .edit-link-button {
     border-radius: 10px;
     border: 1px solid white;
+    
     padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.149);
     color: rgb(255, 255, 255);
     text-decoration: none;
+    justify-self: center;
+    align-content: center;
+    padding-top: 0.7rem;
     
 }
 .edit-button {
     margin-left: auto;
     display: flex;
+    
    
+}
+.delete-button{
+    margin:1px;
+    padding: 1rem;
+    display: flex;
+    background-color: rgba(255, 0, 0, 0.685);
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    max-width: fit-content;
 }

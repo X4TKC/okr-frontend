@@ -13,8 +13,8 @@ export const addUser = async (user) => {
 
 export const getUserById = async (id) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/User/get?id=user_1" );
-    //  console.log(response.data,"getUser response aaa")
+      const response = await axios.get("https://okr-backend-service.onrender.com/api/User/get?id=user_1" );
+
       return response.data;
     } catch (err) {
       console.log(err, "err");
@@ -23,6 +23,7 @@ export const getUserById = async (id) => {
 };
 /*
 export const getUserById = async (id) => {
+
   return await API.get("/User/get?id=user_1");
 };*/
 
