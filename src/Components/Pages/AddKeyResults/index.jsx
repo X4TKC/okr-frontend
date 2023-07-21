@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate, useParams } from "react-router-dom";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import './index.css'
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import "./index.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddKey } from "../../../Services/keyService";
 
@@ -11,56 +11,46 @@ const AddKeyResults = () => {
   const [objId, setObjId] = useState("");
   const urlParam = useParams();
   const navigate = useNavigate();
-  const queryClient = useQueryClient()
-
+  const queryClient = useQueryClient();
 
   const handleKeyResultChange = (event) => {
     setKeyResult(event.target.value);
   };
 
-
-
-
-  useEffect(()=> {
-    setObjId(urlParam.objId)
-    console.log( 'sjsjs', objId)
-  }, [])
-
+  useEffect(() => {
+    setObjId(urlParam.objId);
+  }, []);
 
   const mutation = useMutation({
     mutationFn: AddKey,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['addKey'] })
-    }, onError: () => {
-      console.log(keyresult, objId)
-    }
-  })
-
+      queryClient.invalidateQueries({ queryKey: ["addKey"] });
+    },
+    onError: () => {
+      console.log(keyresult, objId);
+    },
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("KeyResult:", keyresult);
 
     mutation.mutate({
-     
       description: keyresult,
-      objectiveId:objId,
+      objectiveId: objId,
       action: "",
-      measurement: ""  
+      measurement: "",
+    });
 
-   
-    })
-   
     // Clear the form fields after submitting
     //setKeyResult("");
-    navigate(`/objective-details/${objId}`)
-  }; 
-
+    navigate(`/objective-details/${objId}`);
+  };
 
   return (
     <div>
       <div className="auth-form-container">
-      <ArrowBackIcon onClick={()=> navigate(-1)}></ArrowBackIcon>
+        <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
         <h2>New Key Result</h2>
         <div className="auth-form-container">
           <label htmlFor="keyresult">2. Identify Key Results:</label>
@@ -85,11 +75,9 @@ const AddKeyResults = () => {
           ></input>
           <br />
           <div>
-          <button type="submit">Add key result</button>
+            <button type="submit">Add key result</button>
           </div>
-         
         </form>
-        
       </div>
     </div>
   );

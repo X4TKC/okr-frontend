@@ -3,18 +3,34 @@ import { auth } from "../../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
-
+import { getUserByEmail } from "../../../Services/userService";
+import { useQuery } from "@tanstack/react-query";
+import { useSessionContext } from "../../../App";
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const { session, setSession } = useSessionContext();
   const navigate = useNavigate();
+  const { data, isSuccess, isFetching, isLoading, isError } = useQuery({
+    queryKey: ["User"],
+    queryFn: () => getUserByEmail(email),
+    enabled: !!email,
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
     signInWithEmailAndPassword(auth, email, pass)
       .then((useCredential) => {
         console.log(useCredential);
-        navigate("/objectives");
+        setSession(data?.id);
+        {
+          isError && <p>User not found</p>;
+        }
+        {
+          isLoading && <p>Loading</p>;
+        }
+        {
+          isSuccess && navigate(`/objectives`);
+        }
       })
       .catch((error) => {
         console.log(error);

@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Link } from 'react-router-dom';
 import "./index.css";
+import AuthDetails from '../../Auth/AuthDetails';
 const Header = () => {
+
   return (
     <header>
       <nav>
@@ -18,9 +20,7 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/user">User</Link>
-          </li>
+          <AuthDetails/>
         </ul>
       </nav>
     </header>

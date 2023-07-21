@@ -2,10 +2,12 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
+import { useSessionContext } from "../../App";
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
-
+  const { session, setSession } = useSessionContext();
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -19,10 +21,10 @@ const AuthDetails = () => {
       listen();
     };
   }, []);
-
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
+        setSession(null);
         console.log("sign out successful");
         navigate("/");
       })
@@ -30,16 +32,16 @@ const AuthDetails = () => {
   };
 
   return (
-    <div>
+    <>
       {authUser ? (
         <>
-          <p>{`Signed In as ${authUser.email}`}</p>
-          <button onClick={userSignOut}>Sign Out</button>
+          <li>{authUser.email}</li>
+          <button className="button" onClick={userSignOut}>{`Sign out`}</button>
         </>
       ) : (
-        <p>Signed Out</p>
+        <li>Signed Out</li>
       )}
-    </div>
+    </>
   );
 };
 

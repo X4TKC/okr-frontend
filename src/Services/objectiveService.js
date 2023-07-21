@@ -1,8 +1,8 @@
 
 import {API} from './webpageInstance';
 
-export const getObjectives = async () => {
-  return await API.get("/objective");
+export const getObjectives = async (id) => {
+  return await API.get(`/Objective/getAllFrom?id=${id}`);
 };
 
 export const addObjective = async (objective) => {
