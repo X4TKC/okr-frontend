@@ -5,30 +5,23 @@
 }
 .name {
     border-radius: 10px;
-    border: 1px solid white;
     padding: 0.5rem;
+    border: 1px solid white;
 }
 .key-name{
     margin:auto;
     display: flex;
     border-radius: 10px;
-    border: 1px solid white;
     padding-left: 1rem;
     padding-right: 2rem;
     flex-direction: column;
-    color:white;
-   
+    color:rgb(255, 255, 255);
     max-height: max-content;
-  
-   
 }
-
 .key-title {
     align-self: flex-start;
     padding-left: 0rem;
 }
-
-
 .key-section {
     margin: auto;
     display: flex;
@@ -36,9 +29,7 @@
     max-width: max-content;
     flex-direction: column;
     gap: 1rem;
-    
 }
-
 .top-buttons {
     display: flex;
     flex-direction: horizontal ;
@@ -62,8 +53,9 @@
 .edit-button {
     margin-left: auto;
     display: flex;
-    
-   
+    border-radius: 10px;
+    color: white;
+    max-width: fit-content;
 }
 .delete-button{
     margin:1px;
@@ -75,3 +67,14 @@
     border: 1px solid white;
     max-width: fit-content;
 }
+.button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+  }

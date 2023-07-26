@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./index.css";
-import Modal from "../components/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addObjective } from "../../../Services/objectiveService";
@@ -17,48 +16,37 @@ const AddObjective = () => {
   const [userId, setUserId] = useState("");
   const navigate = useNavigate();
   const urlParam = useParams();
-
   const handleStartDateChange = (date) => {
     setStartDate(date);
   };
-
   const handleEndDateChange = (date) => {
     setEndDate(date);
   };
-
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
   useEffect(() => {
     setUserId(session);
-    console.log("testuser", session);
   }, []);
-
   const queryClient = useQueryClient();
-
   const mutation = useMutation({
     mutationFn: addObjective,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["addObj"] });
     },
   });
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // For this example, we'll just log the values to the console
     mutation.mutate({
       name: name,
       keyResultList: [],
       dateStart: startDate,
       dateEnd: endDate,
-      userId: session, //TO BE REPLACED WITH GLOBAL FOR USER SESSION
+      userId: session,
     });
-
     setName("");
     setEndDate("");
     setStartDate("");
-
     navigate(`/objectives`);
   };
   return (
@@ -66,18 +54,22 @@ const AddObjective = () => {
       <div>
         <div className="auth-form-container">
           <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-          <h2>New Objective Title</h2>
+          <h2>
+            Here we are defining the title of our objective and the range of
+            dates you want to achieve it
+          </h2>
           <div className="auth-form-container definition">
-            <label htmlFor="name">1. Define your objective:</label>
-            <small>
+            <label htmlFor="name">Remember to:</label>
+            <h3>
               Clearly state your personal goal. For example, "Improve Physical
               Fitness and Achieve a Healthy Body."
-            </small>
+            </h3>
           </div>
           <form className="objective-form " onSubmit={handleSubmit}>
             <div>
               <div>
                 <input
+                  className="input-login"
                   value={name}
                   onChange={handleNameChange}
                   type="name"
@@ -87,9 +79,9 @@ const AddObjective = () => {
                   required
                 ></input>
               </div>
-
               <div>
                 <DatePicker
+                  className="input-login"
                   id="startDate"
                   placeholderText="Start Date"
                   selected={startDate}
@@ -98,9 +90,9 @@ const AddObjective = () => {
                   required
                 />
               </div>
-
               <div>
                 <DatePicker
+                  className="input-login"
                   placeholderText="End Date"
                   id="endDate"
                   selected={endDate}
@@ -111,7 +103,9 @@ const AddObjective = () => {
               </div>
             </div>
             <div className="m-10 py-10 px-40">
-              <button type="submit">Add Objective title</button>
+              <button className="button" type="submit">
+                Add Objective title
+              </button>
             </div>
           </form>
         </div>
@@ -119,5 +113,4 @@ const AddObjective = () => {
     </>
   );
 };
-
 export default AddObjective;

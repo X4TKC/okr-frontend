@@ -20,13 +20,13 @@ export const Login = (props) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, pass)
       .then((useCredential) => {
-        console.log(useCredential);
         setSession(data?.id);
         {
           isError && <p>User not found</p>;
         }
         {
-          isLoading && <p>Loading</p>;
+          isLoading && console.log("loading");
+          <p>Loading</p>;
         }
         {
           isSuccess && navigate(`/objectives`);
@@ -40,8 +40,9 @@ export const Login = (props) => {
     <div className="auth-form-container">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email</label>
         <input
+          className="input-login"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -49,8 +50,9 @@ export const Login = (props) => {
           id="email"
           name="email"
         ></input>
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <input
+          className="input-login"
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type="password"
@@ -58,7 +60,9 @@ export const Login = (props) => {
           id="password"
           name="password"
         ></input>
-        <button type="submit">Log In</button>
+        <button className="button" type="submit">
+          Log In
+        </button>
       </form>
       <button className="link-btn" onClick={() => props.onFormSwitch("signup")}>
         Don't have an account? Register here.

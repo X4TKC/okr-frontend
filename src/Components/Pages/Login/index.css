@@ -9,3 +9,29 @@
     display: flex;
     flex-direction: column;
 }
+.button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+.input-login {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    
+  }
+  .input-login::placeholder {
+    color: white; /* Custom color for the placeholder text */
+  }

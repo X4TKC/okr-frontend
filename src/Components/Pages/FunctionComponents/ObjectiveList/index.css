@@ -1,0 +1,67 @@
+/* Normalize CSS for consistent styling across browsers */
+/* You can use a CSS reset or any normalize library */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Custom styling for the unordered list */
+  .custom-ul {
+    list-style: none; /* Remove the default bullet points */
+    display: flex; /* Display list items horizontally */
+    justify-content: space-around; /* Distribute items evenly along the horizontal axis */
+    background-color: transparent; /* Optional background color for the entire list */
+    padding: 10px; /* Optional padding for the entire list */
+  }
+  
+  /* Styling for list items */
+  .custom-ul li {
+    margin: 0 10px; /* Optional margin between list items */
+  }
+  
+  /* Styling for links within list items */
+  .custom-ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #f1f1f1; /* Link text color */
+    padding: 5px 10px; /* Optional padding for the link */
+    border-radius: 5px; /* Optional rounded corners for the link */
+  }
+  
+  /* Styling for links on hover */
+  .custom-ul li a:hover {
+    background-color: #941dc4; /* Background color on hover */
+  }
+    .objective-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 1rem;
+    
+    margin-bottom: 1rem;
+  } 
+  .objective-title {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 5px;
+  } 
+  .objective-description {
+    color: #af05fd;
+  }
+  
+  .objective-date {
+    color: #ffffff;
+  }
+  .edit-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  .calendar-section {
+    border: 5px solid rgb(168, 2, 245);
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 1rem;
+  }

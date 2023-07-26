@@ -16,3 +16,29 @@
 .edit-icon{
     margin-top: 1.2rem;
 }
+.button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .name {
+    border-radius: 10px;
+    padding: 0.5rem;
+    border: 1px solid white;
+}.delete-button{
+    margin:1px;
+    padding: 1rem;
+    display: flex;
+    background-color: rgba(255, 0, 0, 0.685);
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    max-width: fit-content;
+    justify-content: center;
+}

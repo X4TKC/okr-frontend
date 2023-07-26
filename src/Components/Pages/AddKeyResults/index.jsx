@@ -33,8 +33,6 @@ const AddKeyResults = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("KeyResult:", keyresult);
-
     mutation.mutate({
       description: keyresult,
       objectiveId: objId,
@@ -51,20 +49,21 @@ const AddKeyResults = () => {
     <div>
       <div className="auth-form-container">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-        <h2>New Key Result</h2>
+        <h2>Here we are defining your keys of your objective</h2>
         <div className="auth-form-container">
-          <label htmlFor="keyresult">2. Identify Key Results:</label>
-          <small>
+          <label htmlFor="keyresult">Remember to:</label>
+          <h3>
             Determine specific and measurable outcomes that will indicate
             progress toward your objective. For example: Reduce body fat
-            percentage by 5% Increase cardiovascular endurance Improve strength
-            and muscle tone Enhance flexibility and mobility
-          </small>
+            percentage by 5%, Increase cardiovascular endurance, Improve
+            strength and muscle tone Enhance flexibility and mobility
+          </h3>
         </div>
         <form className="objective-form" onSubmit={handleSubmit}>
           <label htmlFor="keyresult">Name</label>
           <br />
           <input
+            className="input-keyresult"
             value={keyresult}
             onChange={handleKeyResultChange}
             type="text"
@@ -75,7 +74,9 @@ const AddKeyResults = () => {
           ></input>
           <br />
           <div>
-            <button type="submit">Add key result</button>
+            <button className="button" type="submit">
+              Add key result
+            </button>
           </div>
         </form>
       </div>
