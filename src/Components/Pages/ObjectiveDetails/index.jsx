@@ -7,7 +7,7 @@ import {
   deleteObjective,
   getObjectiveById,
 } from "../../../Services/objectiveService";
-
+import Header from "../../Atoms/Header";
 const ObjectiveDetails = () => {
   const navigate = useNavigate();
   const urlParam = useParams();
@@ -31,12 +31,11 @@ const ObjectiveDetails = () => {
   });
 
   return (
-    <>
+    <div className="">
+      <Header />
       <div className="objective-info">
         <div className="top-buttons">
-          <ArrowBackIcon
-            onClick={() => navigate("/objectives")}
-          ></ArrowBackIcon>
+          <ArrowBackIcon onClick={() => navigate("/")}></ArrowBackIcon>
           <div className="edit-button">
             <Link
               to={`/edit-objective/${urlParam.id}`}
@@ -84,7 +83,7 @@ const ObjectiveDetails = () => {
         </button>
         {/*<p>Date: {data?.data.dateStart}</p>*/}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -20,3 +20,9 @@ export const updateKey= async(key) => {
 export const deleteKey= async(id) => {
   return await API.delete(`/KeyResult/delete?id=${id}`)
 };
+export const checkKey= async(id) => {
+  return await API.put(`/KeyResult/check?id=${id}`)
+};
+export const unCheckKey= async(id) => {
+  return await API.put(`/KeyResult/unCheck?id=${id}`)
+};

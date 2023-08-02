@@ -29,7 +29,7 @@ export const Login = (props) => {
           <p>Loading</p>;
         }
         {
-          isSuccess && navigate(`/objectives`);
+          isSuccess && navigate(`/`);
         }
       })
       .catch((error) => {

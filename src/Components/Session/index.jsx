@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 const Session = () => {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState();
 
   // Load the session from the cookie on component mount
   useEffect(() => {

@@ -1,11 +1,14 @@
-.button {
-    color: #fff;
-    background-color: #007bff00;
-    border: 1px solid white;
+.button-auth {
+    background-color: transparent;
     padding: 10px 20px;
     border-radius: 10px;
     text-decoration: none;
     display: inline-block;
-    margin-top: 20px;
-    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #333;
+  }
+  nav .button-auth:hover {
+    background-color: #c66fbc;
   }

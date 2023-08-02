@@ -33,7 +33,6 @@ const AddMeasurement = () => {
 
     // Perform any additional validation or processing here
     // For this example, we'll just log the values to the console
-    console.log("Measurement:", measurement);
 
     mutation.mutate({
       id: data?.data.id,

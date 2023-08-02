@@ -26,7 +26,7 @@ const AuthDetails = () => {
       .then(() => {
         setSession(null);
         console.log("sign out successful");
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => console.log(error));
   };
@@ -35,8 +35,11 @@ const AuthDetails = () => {
     <>
       {authUser ? (
         <>
+          <button
+            className="button-auth"
+            onClick={userSignOut}
+          >{`Sign out`}</button>
           <li>{authUser.email}</li>
-          <button className="button" onClick={userSignOut}>{`Sign out`}</button>
         </>
       ) : (
         <li>Signed Out</li>

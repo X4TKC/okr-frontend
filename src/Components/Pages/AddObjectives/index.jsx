@@ -47,7 +47,7 @@ const AddObjective = () => {
     setName("");
     setEndDate("");
     setStartDate("");
-    navigate(`/objectives`);
+    navigate(`/`);
   };
   return (
     <>

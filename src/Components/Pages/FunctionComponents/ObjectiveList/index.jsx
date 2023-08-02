@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import KeyResultListFunction from "../KeyResultListFunction";
 function ObjectiveList({ data }) {
-  console.log("data", data);
   const functionData = {
     outputHTML() {
       if (data.length === 0)
@@ -45,6 +44,6 @@ function ObjectiveList({ data }) {
       );
     },
   };
-  return <div className="calendar-section">{functionData.outputHTML()}</div>;
+  return <div className="">{functionData.outputHTML()}</div>;
 }
 export default ObjectiveList;

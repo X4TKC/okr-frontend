@@ -31,7 +31,6 @@ const AddAction = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("Action:", action, data);
     mutation.mutate({
       id: data?.data.id,
       description: data?.data.description,

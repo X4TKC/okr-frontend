@@ -25,6 +25,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import MainPage from "./Components/Pages/MainPage";
 const SessionContext = createContext();
 export const useSessionContext = () => useContext(SessionContext);
 function App() {
@@ -35,17 +36,17 @@ function App() {
     setCurrentForm(formName);
   }
   return (
-    <SessionContext.Provider value={{ session, setSession }}>
+    <SessionContext.Provider value={{ session, setSession, clearSession }}>
     <QueryClientProvider client={queryClient} >
       <BrowserRouter>
-          <Header/>
           <div className="App">
           <Routes>
-            <Route exact path="/objectives" element={<ObjectiveList />} />
+            <Route exact path="/" element={<MainPage />}/>
+            {/*<Route exact path="/objectives" element={<ObjectiveList />} />*/}
             {
-              currentForm === "login" ?  <Route path="/" element={ <Login onFormSwitch={toggleForm} session={setSession} /> } /> : <Route path="/" element={ <Signup onFormSwitch={toggleForm} /> } />
+              currentForm === "login" ?  <Route path="/login" element={ <Login onFormSwitch={toggleForm} session={setSession} /> } /> : <Route path="/signup" element={ <Signup onFormSwitch={toggleForm} /> } />
             }
-            <Route path="/objectives" element={<ObjectiveList/>}></Route>
+            {/*<Route path="/objectives" element={<ObjectiveList/>}></Route>*/}
             <Route path="/edit-objective/:id" element={<EditObjectiveForm />}></Route>
             <Route path="/objective-details/:id" element={<ObjectiveDetails/>}></Route>
             <Route path="key-details/:id" element={<KeyDetails/>}></Route>

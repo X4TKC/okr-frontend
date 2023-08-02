@@ -1,0 +1,72 @@
+/* Normalize CSS for consistent styling across browsers */
+/* You can use a CSS reset or any normalize library */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Custom styling for the unordered list */
+  .custom-ul {
+    list-style: none; /* Remove the default bullet points */
+    display: flex; /* Display list items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap to the next line when needed */
+    justify-content: center; /* Distribute items evenly along the horizontal axis */
+    background-color: transparent; /* Optional background color for the entire list */
+    padding: 10px; /* Optional padding for the entire list */
+    gap: 10px;
+  }
+  .calendar-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;
+    margin-top: 20px; /* Add some spacing between the objectives and the calendar */
+  }
+
+    .objective-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  } 
+  .objective-title {
+    color: #ffffff;
+    font-size: 20px;
+
+  } 
+  .objective-description {
+    color: #af05fd;
+  }
+  
+  .objective-date {
+    color: #ffffff;
+  }
+  .edit-link {
+    color: #626263;
+    text-decoration: solid;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  .calendar-section {
+    border: 5px solid rgb(168, 2, 245);
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+  }
+  .calendar-list {
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 200px; /* Adjust padding as needed */
+    min-height: 100vh; /* Make sure the container occupies the full viewport height */
+
+    display: flex; /* Display the content in a column layout */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }

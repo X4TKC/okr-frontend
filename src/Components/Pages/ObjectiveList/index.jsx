@@ -6,7 +6,6 @@ import { getObjectives } from "../../../Services/objectiveService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSessionContext } from "../../../App";
 import CalendarList from "../FunctionComponents/CalendarList";
-import ObjectiveListComponent from "../FunctionComponents/ObjectiveList";
 const ObjectiveList = () => {
   const { session, setSession } = useSessionContext();
   const queryClient = useQueryClient();
@@ -22,15 +21,13 @@ const ObjectiveList = () => {
   });
 
   return (
-    <div className="objective-list">
+    <div className="calendar-list">
       <h2 className="list-title">Welcome to O.K.R.</h2>
+      <h3 className="objectives-title">
+        Here is a list of all your objectives:
+      </h3>
       {isError && <p>No objectives available</p>}
-      {isSuccess && (
-        <div className="body-calendar-objectives">
-          <CalendarList data={data?.data} />
-          <ObjectiveListComponent data={data?.data} />
-        </div>
-      )}
+      {isSuccess && <CalendarList data={data?.data} />}
       <Link to={`/add-objective`} className="add-objective-button">
         Add New Objective
       </Link>

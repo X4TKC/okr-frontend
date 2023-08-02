@@ -1,7 +1,21 @@
+.objective-details {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    display: flex;
+    padding: 10px;
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    
+  }
 .objective-info {
-    border-radius: 10px;
+    border-radius: 1px;
     border: 1px solid white;
-    padding: 2rem;
+    padding: 50px;
+
+
 }
 .name {
     border-radius: 10px;

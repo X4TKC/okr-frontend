@@ -1,13 +1,21 @@
+html, body {
+  height: 20%;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(99deg, #7439db, #c66fbc 48%, #F7944D);
+}
+
+/* Set background color for the .App container */
 .App {
   text-align: center;
   display: flex;
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #F7944D);
+  /* Remove background-image from .App, as it is set on html and body */
 }
-
 .auth-form-container, .login-form, .signup-form {
   display: flex;
   

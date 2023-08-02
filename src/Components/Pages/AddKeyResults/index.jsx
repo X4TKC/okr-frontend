@@ -5,7 +5,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./index.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddKey } from "../../../Services/keyService";
-
+import Header from "../../Atoms/Header";
 const AddKeyResults = () => {
   const [keyresult, setKeyResult] = useState("");
   const [objId, setObjId] = useState("");
@@ -39,14 +39,12 @@ const AddKeyResults = () => {
       action: "",
       measurement: "",
     });
-
-    // Clear the form fields after submitting
-    //setKeyResult("");
     navigate(`/objective-details/${objId}`);
   };
 
   return (
     <div>
+      <Header />
       <div className="auth-form-container">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
         <h2>Here we are defining your keys of your objective</h2>

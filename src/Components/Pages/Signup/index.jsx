@@ -23,7 +23,7 @@ export const Signup = (props) => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((useCredential) => {
         console.log(useCredential);
-        navigate("/objectives");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);

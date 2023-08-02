@@ -1,13 +1,17 @@
 header {
-    background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #F7944D);
     display: flex;
-    padding: 20px;
+    padding: 10px;
     min-height: 1%;
     text-align: center;
     align-items: center;
     justify-content: center;
-    color: white;
-    
+    color: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
   }
   
   nav ul {
@@ -33,10 +37,36 @@ header {
     border-radius: 4px;
   }
   
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .navbar {
+    display: flex; /* or display: grid; */
+    gap: 10px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+  }
   nav a:hover {
-    background-color: #ddd;
+    background-color: #c66fbc;
   }
   nav a:focus {
     border: 1px solid rgba(255, 255, 255, 0.427);
     border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column; /* or grid-template-columns: 1fr; */
+      align-items: center;
+    }
+  
+    .navbar {
+      margin-top: 10px;
+    }
   }
