@@ -9,7 +9,7 @@ import AddMeasurementForm from "./Components/Pages/AddMeasurement"
 import EditObjectiveForm from "./Components/Pages/EditObjective"
 import { BrowserRouter } from 'react-router-dom';
 import ObjectiveDetails from "./Components/Pages/ObjectiveDetails";
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import KeyDetails from "./Components/Pages/KeyDetails";
 import { User } from "./Components/Pages/Users";
 import EditAction from "./Components/Pages/EditAction";
@@ -39,7 +39,7 @@ function App() {
       <BrowserRouter>
           <div className="App">
           <Routes>
-            <Route exact path="/" element={<MainPage />}/>
+          <Route  path="/" element={<MainPage />} session={session} />
             {/*<Route exact path="/objectives" element={<ObjectiveList />} />*/}
             {/*
               currentForm === "login" ?  <Route path="/login" element={ <Login onFormSwitch={toggleForm} session={setSession} /> } /> : <Route path="/signup" element={ <Signup onFormSwitch={toggleForm} /> } />

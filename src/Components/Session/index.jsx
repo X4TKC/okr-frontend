@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 const Session = () => {
-  const [session, setSession] = useState();
-
-  // Load the session from the cookie on component mount
-  useEffect(() => {
+  const [session, setSession] = useState(() => {
+    // Initialize the session from cookies on component mount
     const cookieSession = Cookies.get("session");
-    if (cookieSession) {
-      setSession(cookieSession);
-    }
-  }, []);
+    return cookieSession || null;
+  });
 
-  // Save the session to the cookie whenever it changes
+  // Save the session to cookies and local storage whenever it changes
   useEffect(() => {
     if (session) {
-      Cookies.set("session", session, { expires: 7 }); // Set an expiration time (in days) or null for a session cookie.
+      Cookies.set("session", session, { expires: 7 }); // Set an expiration time (in days) for the cookie
+      localStorage.setItem("session", session); // Save to local storage as well
+    } else {
+      Cookies.remove("session");
+      localStorage.removeItem("session");
     }
   }, [session]);
 
   // Function to clear the session
   const clearSession = () => {
     setSession(null);
-    Cookies.remove("session");
   };
 
   return { session, setSession, clearSession };
