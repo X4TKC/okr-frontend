@@ -8,7 +8,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   console.log(session, "session");
   useEffect(() => {
-    if (session === null) {
+    if (session === undefined) {
       navigate("/login");
     }
   }, []);
