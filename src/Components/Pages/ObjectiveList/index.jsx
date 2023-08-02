@@ -22,12 +22,27 @@ const ObjectiveList = () => {
 
   return (
     <div className="calendar-list">
-      <h2 className="list-title">Welcome to O.K.R.</h2>
-      <h3 className="objectives-title">
-        Here is a list of all your objectives:
-      </h3>
+      <h1 className="list-title">
+        Welcome to O.K.R.<br></br>
+        <br></br>
+      </h1>
+      <h2 className="list-title">
+        To Your Goal Tracker App!<br></br>
+        <br></br>
+      </h2>
+      <p className="list-title">
+        Hello, We're excited to have you here. This is your personal Goal
+        Tracker application where you can set and manage your Objectives and Key
+        Results (OKRs).<br></br>
+      </p>
+
+      <h3 className="objectives-title">Here is a list of all your goals:</h3>
       {isError && <p>No objectives available</p>}
       {isSuccess && <CalendarList data={data?.data} />}
+      <p className="list-title">
+        <br></br>Ready to continue? Let's create your next objective! Click the
+        button below to begin:
+      </p>
       <Link to={`/add-objective`} className="add-objective-button">
         Add New Objective
       </Link>

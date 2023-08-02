@@ -8,9 +8,26 @@ function CalendarList({ data }) {
       if (data.length === 0)
         return (
           <div>
-            <img src={require("../../../Images/calendar.png")} />
-            <br></br>
-            <>This screen is where all your calendar goals will appear</>
+            <div>
+              <img src={require("../../../Images/star.png")} />
+              <br></br>
+              <>
+                This screen is where all your goals will appear<br></br>
+              </>
+              <h3>
+                <br></br>Add new Goals!.
+              </h3>
+            </div>
+            <div>
+              <br></br>
+              <img src={require("../../../Images/calendar.png")} />
+              <br></br>
+              <>
+                <br></br>This screen is where all your calendar goals will
+                appear
+                <br></br>
+              </>
+            </div>
           </div>
         );
       return (

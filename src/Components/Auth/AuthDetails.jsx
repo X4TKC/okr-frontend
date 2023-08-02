@@ -7,7 +7,7 @@ import { useSessionContext } from "../../App";
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
-  const { session, setSession } = useSessionContext();
+  const { session, setSession, clearSession } = useSessionContext();
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -24,7 +24,7 @@ const AuthDetails = () => {
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
-        setSession(null);
+        clearSession();
         console.log("sign out successful");
         navigate("/login");
       })
