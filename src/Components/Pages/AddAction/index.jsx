@@ -27,7 +27,7 @@ const AddAction = () => {
     queryKey: ["keyInfo"],
     queryFn: () => getKeytById(urlParam.keyId), //USEPARAMS
   });
-
+  console.log("Data", data);
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -37,6 +37,7 @@ const AddAction = () => {
       objectiveId: data?.data.objectiveId,
       action: action,
       measurement: data?.data.measurement,
+      check: data?.data.check,
     });
 
     setAction("");

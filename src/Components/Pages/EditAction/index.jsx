@@ -37,6 +37,7 @@ const EditAction = () => {
       objectiveId: data?.data.objectiveId,
       action: action,
       measurement: data?.data.measurement,
+      check: data?.data.check,
     });
 
     setAction("");

@@ -5,11 +5,13 @@ import "./index.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../../../Services/userService";
+import { useSessionContext } from "../../../App";
 export const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
   const queryClient = useQueryClient();
+  const { session, setSession, clearSession } = useSessionContext();
   const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: addUser,
@@ -23,6 +25,7 @@ export const Signup = (props) => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((useCredential) => {
         console.log(useCredential);
+
         navigate("/");
       })
       .catch((error) => {
@@ -38,35 +41,40 @@ export const Signup = (props) => {
     <div className="auth-form-container">
       <h2>Signup</h2>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Full Name</label>
+        <label htmlFor="name">Username</label>
         <input
           value={name}
+          className="input-signup"
           onChange={(e) => setName(e.target.value)}
           name="name"
           id="name"
-          placeholder="Full Name"
+          placeholder="yourusername"
         />
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email</label>
         <input
           value={email}
+          className="input-signup"
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="youremail@gmail.com"
           id="email"
           name="email"
         ></input>
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <input
           value={pass}
+          className="input-signup"
           onChange={(e) => setPass(e.target.value)}
           type="password"
           placeholder="*******"
           id="password"
           name="password"
         ></input>
-        <button type="submit">Sign In</button>
+        <button className="button" type="submit">
+          Sign In
+        </button>
       </form>
-      <button className="link-btn" onClick={() => props.onFormSwitch("login")}>
+      <button className="link-btn" onClick={() => navigate("/login")}>
         Already have an account? Login here.
       </button>
     </div>

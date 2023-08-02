@@ -1,4 +1,4 @@
-import React, {useEffect, createContext, useContext, useState} from "react";
+import React, {createContext, useContext, useState} from "react";
 import './App.css';
 import { Login } from "./Components/Pages/Login"
 import { Signup } from "./Components/Pages/Signup"
@@ -7,12 +7,10 @@ import AddKeyResultForm from "./Components/Pages/AddKeyResults"
 import AddActionForm from "./Components/Pages/AddAction"
 import AddMeasurementForm from "./Components/Pages/AddMeasurement"
 import EditObjectiveForm from "./Components/Pages/EditObjective"
-import ObjectiveList from "./Components/Pages/ObjectiveList";
 import { BrowserRouter } from 'react-router-dom';
 import ObjectiveDetails from "./Components/Pages/ObjectiveDetails";
 import { Routes, Route } from "react-router-dom"
 import KeyDetails from "./Components/Pages/KeyDetails";
-import Header from "./Components/Atoms/Header";
 import { User } from "./Components/Pages/Users";
 import EditAction from "./Components/Pages/EditAction";
 import EditMeasurement from "./Components/Pages/EditMeasurement";
@@ -43,10 +41,12 @@ function App() {
           <Routes>
             <Route exact path="/" element={<MainPage />}/>
             {/*<Route exact path="/objectives" element={<ObjectiveList />} />*/}
-            {
+            {/*
               currentForm === "login" ?  <Route path="/login" element={ <Login onFormSwitch={toggleForm} session={setSession} /> } /> : <Route path="/signup" element={ <Signup onFormSwitch={toggleForm} /> } />
-            }
+  */}
             {/*<Route path="/objectives" element={<ObjectiveList/>}></Route>*/}
+            <Route path="/login" element={ <Login/>}></Route>
+            <Route path="/signup" element={ <Signup />}></Route>
             <Route path="/edit-objective/:id" element={<EditObjectiveForm />}></Route>
             <Route path="/objective-details/:id" element={<ObjectiveDetails/>}></Route>
             <Route path="key-details/:id" element={<KeyDetails/>}></Route>

@@ -39,6 +39,7 @@ const EditMeasurement = () => {
       objectiveId: data?.data.objectiveId,
       action: data?.data.action,
       measurement: measurement,
+      check: data?.data.check,
     });
 
     navigate(`/key-details/${urlParam.keyId}`);
