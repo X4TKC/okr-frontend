@@ -39,10 +39,10 @@ const AuthDetails = () => {
             className="button-auth"
             onClick={userSignOut}
           >{`Sign out`}</button>
-          <li>{authUser.email}</li>
+          <li className="email-text">{authUser.email}</li>
         </>
       ) : (
-        <li>Signed Out</li>
+        <li className="email-text">Signed Out</li>
       )}
     </>
   );

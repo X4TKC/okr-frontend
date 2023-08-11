@@ -2,22 +2,17 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import "./index.css";
 import AuthDetails from '../../Auth/AuthDetails';
+
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+        <ul className="nav-list">
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Home</Link>
           </li>
-         {/* <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          */ }
-          <AuthDetails/>
+          {/* Add other navigation links as needed */}
+          <AuthDetails />
         </ul>
       </nav>
     </header>
@@ -25,3 +20,4 @@ const Header = () => {
 };
 
 export default Header;
+

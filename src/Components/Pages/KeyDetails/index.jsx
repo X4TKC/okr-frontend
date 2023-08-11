@@ -24,32 +24,45 @@ const KeyDetails = ({ keyInfo }) => {
     }
   };
   return (
-    <div className="auth-form-container">
+    <div className="auth-form-container-key-details">
       <ArrowBackIcon
         onClick={() => navigate(`/objective-details/${data.data.objectiveId}`)}
       ></ArrowBackIcon>
-      <h2>Here is the details of your key:</h2>
-      <div className="name">
-        <p>{data?.data.description}</p>
+      <h2 className="description-text-keyresult">
+        Here is the details of your key:
+      </h2>
+      <div className="keyresult-item-details definition-keyresult-details">
+        <label className="label-text-keyresult-details">Remember that:</label>
+        <h3 className="keyresult-details-remember-to">
+          For this method to work, we need to have both variables set up. It is
+          important that you know how to measure your key result - understanding
+          what is "key" to achieving your goal.
+        </h3>
+      </div>
+      <div className="keyresult-details">
+        <h3 className="keyresult-details-title">{data?.data.description}</h3>
 
         <div style={{ display: "flex", justifyContent: "center" }}></div>
 
         {isSuccess && data?.data.action && (
           <div>
             <div className="key-edit-action-measurement">
-              <h4>Action:</h4>
+              <h4 className="keyresult-description-details-title">Action:</h4>
               <EditIcon
                 onClick={() => navigate(`/edit-action/${data?.data.id}`)}
                 className="edit-icon"
               ></EditIcon>
             </div>
-            <p> {data?.data.action}</p>
+            <p className="keyresult-description-details-description">
+              {" "}
+              {data?.data.action}
+            </p>
           </div>
         )}
         {isSuccess && !data?.data.action && (
           <div className="buttons">
             <button
-              className="button"
+              className="add-attributes-button"
               onClick={() => navigate(`/add-action/${data?.data.id}`)}
             >
               Add a new action
@@ -74,7 +87,7 @@ const KeyDetails = ({ keyInfo }) => {
           <div className="buttons">
             <button
               onClick={() => navigate(`/add-measurement/${data?.data.id}`)}
-              className="button"
+              className="add-attributes-button"
             >
               Add a new measurement
             </button>

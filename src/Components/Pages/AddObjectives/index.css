@@ -17,6 +17,11 @@
     margin:10px;
     padding: 15px;
     max-width: 350px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    text-align: center;
 }
 .modal {
     border: 1px solid white;
@@ -27,9 +32,9 @@
     display: flex;
     flex-direction: start;
 }
-.input-login {
-    color: #fff;
-    background-color: #007bff00;
+.input-add-objective {
+    color: white;
+    background-color: transparent;
     border: 1px solid white;
     padding: 10px 20px;
     border-radius: 10px;
@@ -37,10 +42,11 @@
     display: inline-block;
     margin-top: 20px;
     font-size: 16px;
-    
   }
-
-  .button {
+  .input-add-objective::placeholder {
+    color: rgba(255, 255, 255, 0.466); /* Your desired placeholder text color */
+  }
+.button {
     color: #fff;
     background-color: #007bff00;
     border: 1px solid white;
@@ -50,4 +56,55 @@
     display: inline-block;
     margin-top: 20px;
     font-size: 16px;
+  }
+.objective-item {
+    border-radius: 20px;
+    background-color: #e1bc7cee; /* Set the background color to a light gray */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px #FAAB63;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #FFE8BC;
+  }
+  .objective-remember-to {
+    color: #485E9C; /* Change the text color to a purple shade */
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-transform: lowercase;
+  }
+  .objective-remember-to::first-letter {
+    text-transform: uppercase; /* Capitalize the first letter of each word */
+  }
+  .add-objective-button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .add-objective-button:hover {
+    background-color: #FF7A59;
+  }
+  .label-text {
+    color: #485E9C;
+    text-decoration: none;
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  .description-text{
+    margin:10px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }

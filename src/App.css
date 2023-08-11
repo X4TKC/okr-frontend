@@ -1,11 +1,12 @@
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 html, body {
-  height: 20%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(99deg, #7439db, #c66fbc 48%, #F7944D);
+  background-color: #2D3E50; /* Use background-color property for the color */
 }
 
-/* Set background color for the .App container */
 .App {
   text-align: center;
   display: flex;
@@ -13,25 +14,70 @@ html, body {
   height: 100%;
   align-items: center;
   justify-content: center;
-  color: white;
-  /* Remove background-image from .App, as it is set on html and body */
+  color: #f8f8f8; /* Changed text color to off-white */
 }
 .auth-form-container, .login-form, .signup-form {
   display: flex;
-  
- 
 }
-@media screen and (min-width: 600px){
-   /*.auth-form-container{
+/* Add some padding to the .container to separate header and content */
+.container {
+  padding: 2rem;
+}
+
+
+
+/* Style the navigation links */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+  color: #333;
+}
+
+nav li:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #c66fbc;
+}
+
+nav a:focus {
+  border: 1px solid rgba(255, 255, 255, 0.427);
+  border-radius: 10px;
+}
+
+/* Update .App class for responsive design */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  /*.auth-form-container {
     padding: 5rem;
     border: 1px solid white;
     border-radius: 10px;
     flex-direction: column;
-   
-    
   }*/
 }
-
 label {
   text-align: left;
   padding: 0.25rem 0;
@@ -42,34 +88,28 @@ input {
   border: none;
   border-radius: 10px;
 }
-
 button {
   border: none;
+  border-radius: 1px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
   color: #7439db;
 }
-
 .link-btn {
   background: none;
-  color: white;
+  color: #f8f8f8; /* Changed link color to off-white */
   text-decoration: underline;
 }
-/* Define the highlighting style for the calendar */
 .highlight {
-  background-color: #5c6ac4; /* Set the background color */
-  color: #0c124e; /* Set the text color */
-  border-radius: 50%; /* Add a circular shape */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  transition: background-color 0.3s ease; /* Add a smooth transition */
+  background-color: #5c6ac4;
+  color: #0c124e;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+.highlight:hover {
+  background-color: #1c0bb6;
 }
 
-.highlight:hover {
-  background-color: #1c0bb6; /* Set the hover background color */
-}
-.react-calendar,
-.react-calendar .react-calendar__month-view {
-  background-color: #f5f5f5  !important; /* Set the background color */
-}

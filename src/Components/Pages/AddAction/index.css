@@ -1,12 +1,13 @@
-.auth-form-container {
+.auth-form-container-add-action {
     border-radius: 10px;
     border: 1px solid white;
     padding: 2rem;
     margin:2rem;
     display:flex;
     justify-content: center;
-    max-width: 30rem;
-    
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 2rem auto; /* Center the container */
+    flex-direction: column;
 }
 
 .details-container {
@@ -52,3 +53,148 @@
     margin-top: 20px;
     font-size: 16px;
   }
+
+  .keyresult-details-remember-to {
+  color: #485E9C; /* Change the text color to a purple shade */
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  justify-content: center;
+  text-align: center;
+  text-transform: lowercase;
+}
+.keyresult-details-remember-to::first-letter {
+  text-transform: uppercase; /* Capitalize the first letter of each word */
+}
+.add-key-result-button {
+  color: #fff;
+  background-color: #007bff00;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  min-height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.add-key-result-button:hover {
+  background-color: #FF7A59;
+}
+.input-add-keyresult {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.input-add-objective::placeholder {
+  color: rgba(255, 255, 255, 0.466); /* Your desired placeholder text color */
+}
+.description-text{
+  margin:10px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+/**
+**/
+.keyresult-details-remember-to {
+  color: #485E9C; /* Change the text color to a purple shade */
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  justify-content: center;
+  text-align: center;
+  text-transform: lowercase;
+}
+.keyresult-details-remember-to::first-letter {
+  text-transform: uppercase; /* Capitalize the first letter of each word */
+}
+.add-action-button {
+  color: #fff;
+  background-color: #007bff00;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  min-height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  display: block;
+    margin: 0 auto;
+}
+
+.add-action-button:hover {
+  background-color: #FF7A59;
+}
+.input-action-defining {
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  width: 100%; /* Expand the width to fill the container */
+    max-width: 400px; /* Set a maximum width if needed */
+}
+.input-add-objective::placeholder {
+  color: rgba(255, 255, 255, 0.466); /* Your desired placeholder text color */
+}
+.section-title{
+  margin:10px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.instructions {
+  border-radius: 20px;
+  background-color: #e1bc7cee; /* Set the background color to a light gray */
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px #FAAB63;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #FFE8BC;
+  max-width: 700px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the box */
+}
+.definition {
+  margin:15px;
+  padding: 20px;
+  text-align: center;
+  align-content: center;
+  margin-top: 1rem;
+  max-width: 700px; /* Adjust the width as needed */
+}
+.instruction-label {
+  color: #485E9C;
+  text-decoration: none;
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 5px;
+}
+.instruction-text {
+  color: #485E9C; /* Change the text color to a purple shade */
+  font-size: 20px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  justify-content: center;
+  text-align: center;
+}
+.instruction-text::first-letter {
+  text-transform: uppercase; /* Capitalize the first letter of each word */
+}

@@ -1,111 +1,157 @@
 .objective-list {
-    font-family: Arial, sans-serif;
-    margin: auto;
-    display: flex;
-    padding: 10px;
-    min-height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    
-  }
-  .calendar-list {
-    font-family: Arial, sans-serif;
-    color: white;
-    padding: 20px; /* Adjust padding as needed */
-    min-height: 100vh; /* Make sure the container occupies the full viewport height */
-    display: flex; /* Display the content in a column layout */
-    flex-direction: column;
-    align-items: center;
-  }
-  .list-title {
-    color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-  
-  .calendar-title {
-    color: white;
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .objectives-title {
-    color: white;
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  .objectives {
-    border: 1px solid white;
-    border-radius: 10px;
-    list-style-type: none;
-    padding: 1rem;
-    margin: 2rem;
-  }
-  
-  .objective-item {
-    border: 1px solid white;
-    border-radius: 10px;
-    background-color: #f8f8f8;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .objective-title {
-    color: #cd645b;
-    font-size: 20px;
-    margin-bottom: 5px;
-  }
-  
-  .objective-description {
-    color: #555;
-  }
-  
-  .objective-date {
-    color: #777;
-  }
-  
-  .edit-link {
-    color: #c941ff;
-    text-decoration: none;
+  font-family: Arial, sans-serif;
+  color: #f8f8f8;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-title {
+  font-size: 24px;
+
+  text-align: center;
+}
+.list-little-tittle {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: justify;
+}
+
+/* Add media query for screens with a maximum width of 768px */
+@media screen and (max-width: 800px) and (min-width: 500px) {
+  .list-little-tittle {
+    margin-right: 75px;
+    margin-left: 75px;
+    text-align: justify;
     font-size: 14px;
-    display: inline-block;
-    margin-top: 5px;
   }
-  
-  .add-objective-button {
-    color: #fff;
-    background-color: #007bff00;
-    border: 1px solid white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-    min-height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-  }
-  
-  .add-objective-button:hover {
-    background-color: #0056b3;
-  }
+}
 
+/* Add media query for screens with a maximum width of 480px */
+@media screen and (max-width: 580px) and (min-width: 200px) {
+  .list-little-tittle {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1920px) and (min-width: 1800px) {
+  .list-little-tittle {
+    margin-right: 700px;
+    margin-left: 700px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1800px) and (min-width: 1600px) {
+  .list-little-tittle {
+    margin-right: 550px;
+    margin-left: 550px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1600px) and (min-width: 1400px) {
+  .list-little-tittle {
+    margin-right: 450px;
+    margin-left: 450px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1400px) and (min-width: 1200px) {
+  .list-little-tittle {
+    margin-right: 350px;
+    margin-left: 350px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 1000px) {
+  .list-little-tittle {
+    margin-right: 250px;
+    margin-left: 250px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 1000px) and (min-width: 800px) {
+  .list-little-tittle {
+    margin-right: 150px;
+    margin-left: 150px;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+.calendar-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
-  .react-calendar__navigation {
-    background-color: white;
-  }
-  .react-calendar__month-view__weekdays__weekday{
-    background-color: white;
-    color:black;
-  }
-  .body-calendar-objectives {
-    display: flex;
-    flex-direction: row;
-  }
+.objectives-title {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.objectives {
+  border-radius: 10px;
+  list-style-type: none;
+  padding: 1rem;
+  margin: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a shadow */
+}
+
+.objective-item {
+  border-radius: 1px;
+  background-color: #e1bc7cee;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e1bc7cee; /* Adjust border color */
+}
+
+.objective-title {
+  color: #cd645b;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.objective-description {
+  color: #555;
+}
+
+.objective-date {
+  color: #777;
+}
+
+.edit-link {
+  color: #c941ff;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.add-objective-button {
+  color: #fff;
+  background-color: #007bff00;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  min-height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.add-objective-button:hover {
+  background-color: #FF7A59;
+}

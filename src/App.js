@@ -40,11 +40,6 @@ function App() {
           <div className="App">
           <Routes>
           <Route  path="/" element={<MainPage />} session={session} />
-            {/*<Route exact path="/objectives" element={<ObjectiveList />} />*/}
-            {/*
-              currentForm === "login" ?  <Route path="/login" element={ <Login onFormSwitch={toggleForm} session={setSession} /> } /> : <Route path="/signup" element={ <Signup onFormSwitch={toggleForm} /> } />
-  */}
-            {/*<Route path="/objectives" element={<ObjectiveList/>}></Route>*/}
             <Route path="/login" element={ <Login/>}></Route>
             <Route path="/signup" element={ <Signup />}></Route>
             <Route path="/edit-objective/:id" element={<EditObjectiveForm />}></Route>
@@ -60,11 +55,8 @@ function App() {
           </Routes>
           </div>
       </BrowserRouter> 
-      
     </QueryClientProvider>
-    
     </SessionContext.Provider>
-    
   );
 }
 export default App;

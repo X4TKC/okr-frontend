@@ -1,72 +1,167 @@
 /* Normalize CSS for consistent styling across browsers */
 /* You can use a CSS reset or any normalize library */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Custom styling for the unordered list */
-  .custom-ul {
-    list-style: none; /* Remove the default bullet points */
-    display: flex; /* Display list items horizontally */
-    flex-wrap: wrap; /* Allow items to wrap to the next line when needed */
-    justify-content: center; /* Distribute items evenly along the horizontal axis */
-    background-color: transparent; /* Optional background color for the entire list */
-    padding: 10px; /* Optional padding for the entire list */
-    gap: 10px;
-  }
-  .calendar-container {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center;
-    margin-top: 20px; /* Add some spacing between the objectives and the calendar */
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .objective-item {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  } 
-  .objective-title {
-    color: #ffffff;
-    font-size: 20px;
+/* Custom styling for the unordered list */
+.custom-ul {
+  list-style: none; /* Remove the default bullet points */
+  display: flex; /* Display list items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap to the next line when needed */
+  justify-content: center; /* Distribute items evenly along the horizontal axis */
+  background-color: transparent; /* Optional background color for the entire list */
+  padding: 10px; /* Optional padding for the entire list */
+  gap: 10px;
+}
 
-  } 
-  .objective-description {
-    color: #af05fd;
-  }
-  
-  .objective-date {
-    color: #ffffff;
-  }
-  .edit-link {
-    color: #626263;
-    text-decoration: solid;
-    font-size: 20px;
-    display: inline-block;
-    margin-top: 5px;
-  }
-  .calendar-section {
-    border: 5px solid rgb(168, 2, 245);
-    min-height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-  }
-  .calendar-list {
-    font-family: Arial, sans-serif;
-    color: white;
-    padding: 200px; /* Adjust padding as needed */
-    min-height: 100vh; /* Make sure the container occupies the full viewport height */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
-    display: flex; /* Display the content in a column layout */
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
+.objective-item {
+  border-radius: 20px;
+  background-color: #e1bc7cee; /* Set the background color to a light gray */
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px #FAAB63;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #FFE8BC;
+}
+
+.objective-title-calendar {
+  color: #485E9C; /* Change the text color to a purple shade */
+  font-size: 20px;
+  margin-bottom: 5px;
+  text-transform: lowercase;
+  text-decoration: underline;
+}
+.objective-title-calendar::first-letter {
+  text-transform: uppercase; /* Capitalize the first letter of each word */
+}
+.objective-description {
+  color: #333; /* Change the text color to a dark shade */
+}
+
+.objective-date {
+  color: #777; /* Change the text color to a light gray */
+}
+
+.edit-link {
+  color: #F2546C;
+  text-decoration: none;
+  font-size: 18px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.calendar-section {
+  border: 5px solid rgb(168, 2, 245);
+  min-height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.calendar-list {
+  font-family: Arial, sans-serif;
+  color: #f8f8f8;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.react-calendar {
+  font-family: Arial, sans-serif;
+  max-width: 400px; /* Set the maximum width of the calendar */
+  margin: auto; /* Center the calendar on the screen */
+  background-color: #00263A; /* Set the background color to black */
+  color: white; /* Set the text color to white */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the calendar navigation buttons */
+.react-calendar__navigation button {
+  background-color: #00263A; /* Set the background color of the buttons */
+  color: white; /* Set the text color to white */
+  font-size: 16px;
+  border-radius: 1%; /* Make the buttons circular */
+  padding: 10px; /* Add some padding */
+}
+
+/* Style the calendar days */
+.react-calendar__month-view__days__day {
+  font-size: 14px;
+  padding: 6px 8px; /* Add some padding */
+  color: #faeaad; /* Set the default color of the day numbers to white */
+}
+/* Style the clicked day */
+.react-calendar__month-view__days__day--active {
+  background-color: blue; /* Set the background color for the clicked day */
+  color: rgb(255, 0, 0); /* Set the text color to white */
+  font-weight: bold; /* Make the text bold */
+}
+/* Style the highlighted calendar days */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #00b4ae63; /* Set the color of days from neighboring months */
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #F2546C; /* Set the color of weekend days to gold */
+}
+.react-calendar__month-view__days__day--highlight {
+  background-color: #003355;
+  color: #003355;
+  font-weight: bold;
+}
+.react-calendar__tile--hover,
+.react-calendar__tile--hover .react-calendar__month-view__days__day {
+  background-color: #003355; /* Set the background color for the hovered day */
+  color: #003355; /* Set the text color to white */
+}
+.react-calendar__navigation button:hover {
+  color: #003355; /* Set the text color to white */
+  background-color: black;
+}
+
+.highlight {
+  border-radius: 50% / 5%;
+  box-shadow: 0 0 0 1px #00B4AF; /* Add a box shadow to the highlighted days */
+}
+/* Style the start of the date range */
+.react-calendar__tile--rangeStart {
+  background-color: #003355; /* Set the background color for the start of the range */
+  color: rgb(19, 0, 0); /* Set the text color to white */
+  font-weight: bold; /* Make the text bold */
+}
+
+/* Style the end of the date range */
+.react-calendar__tile--rangeEnd {
+  background-color: white; /* Set the background color for the end of the range */
+  color: #003355; /* Set the text color to white */
+  font-weight: bold; /* Make the text bold */
+}
+
+/* Style the today's date */
+.react-calendar__tile--now {
+  background-color: transparent; /* Remove the default circle background */
+  color: #ffcc00; 
+}
+.calendar-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #003355;
+}

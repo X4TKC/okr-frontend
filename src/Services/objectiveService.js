@@ -20,3 +20,9 @@ export const updateObjective= async(objective) => {
 export const deleteObjective= async(id) => {
   return await API.delete(`/Objective/delete?id=${id}`)
 };
+export const resetObjective= async(id) => {
+  return await API.put(`/Objective/reset?id=${id}`)
+};
+export const checkObjective= async(id) => {
+  return await API.put(`/Objective/check?id=${id}`)
+};

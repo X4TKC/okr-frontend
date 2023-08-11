@@ -95,7 +95,7 @@ const handleDelete = () => {
           value={dateStart}
           onChange={handleDateStartChange}
           type="date"
-          placeholderText="Start Date"
+          placeholder="Start Date"
           id="startDate"
           name="startDate"
           required
@@ -109,7 +109,7 @@ const handleDelete = () => {
           value={dateEnd}
           onChange={handleDateEndChange}
           type="date"
-          placeholderText="End Date"
+          placeholder="End Date"
           id="endDate"
           name="endDate"
           required
