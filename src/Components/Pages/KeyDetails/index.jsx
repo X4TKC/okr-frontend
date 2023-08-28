@@ -25,9 +25,20 @@ const KeyDetails = ({ keyInfo }) => {
   };
   return (
     <div className="auth-form-container-key-details">
-      <ArrowBackIcon
-        onClick={() => navigate(`/objective-details/${data.data.objectiveId}`)}
-      ></ArrowBackIcon>
+      <div className="top-buttons">
+        <div className="">
+          <ArrowBackIcon
+            onClick={() =>
+              navigate(`/objective-details/${data.data.objectiveId}`)
+            }
+          ></ArrowBackIcon>
+        </div>
+        <div className="right-button">
+          <button onClick={handleDelete} className="delete-objective-button">
+            Delete
+          </button>
+        </div>
+      </div>
       <h2 className="description-text-keyresult">
         Here is the details of your key:
       </h2>
@@ -73,14 +84,19 @@ const KeyDetails = ({ keyInfo }) => {
         {isSuccess && data?.data.measurement && (
           <div>
             <div className="key-edit-action-measurement">
-              <h4>Measurement:</h4>
+              <h4 className="keyresult-description-details-title">
+                Measurement:
+              </h4>
               <EditIcon
                 onClick={() => navigate(`/edit-measurement/${data?.data.id}`)}
                 className="edit-icon"
               ></EditIcon>
             </div>
 
-            <p> {data?.data.measurement}</p>
+            <p className="keyresult-description-details-description">
+              {" "}
+              {data?.data.measurement}
+            </p>
           </div>
         )}
         {isSuccess && !data?.data.measurement && (
@@ -93,9 +109,6 @@ const KeyDetails = ({ keyInfo }) => {
             </button>
           </div>
         )}
-        <button onClick={handleDelete} className="delete-button">
-          Delete
-        </button>
       </div>
     </div>
   );

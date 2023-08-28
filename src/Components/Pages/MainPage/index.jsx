@@ -32,7 +32,7 @@ const MainPage = () => {
   }
 
   if (!session) {
-    // If there is no session, render nothing (you can also show a message or custom content)
+    // If there is no session, render nothing
     return null;
   }
 

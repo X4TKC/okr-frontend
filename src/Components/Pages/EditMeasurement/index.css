@@ -1,4 +1,4 @@
-.input-action-objective {
+.input-measurement-objective {
     color: white;
     background-color: transparent;
     border: 1px solid white;
@@ -11,11 +11,11 @@
     
   }
   
-  .input-action-objective::placeholder {
+  .input-measurement-objective::placeholder {
     color: rgba(255, 255, 255, 0.466);
     
   }
-  .add-objective-button {
+  .add-measurement-button {
     color: #fff;
     background-color: #007bff00;
     border: 1px solid white;
@@ -31,6 +31,6 @@
     font-size: 16px;
   }
   
-  .add-objective-button:hover {
+  .add-measurement-button:hover {
     background-color: #FF7A59;
   }

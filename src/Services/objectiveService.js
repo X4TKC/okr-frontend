@@ -23,6 +23,6 @@ export const deleteObjective= async(id) => {
 export const resetObjective= async(id) => {
   return await API.put(`/Objective/reset?id=${id}`)
 };
-export const checkObjective= async(id) => {
-  return await API.put(`/Objective/check?id=${id}`)
+export const checkObjective= async(id, day, value, keyid) => {
+  return await API.put(`/Objective/check?id=${id}&day=${day}&value=${value}&keyId=${keyid}`)
 };

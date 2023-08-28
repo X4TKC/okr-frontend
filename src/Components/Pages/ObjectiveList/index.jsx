@@ -34,8 +34,9 @@ const ObjectiveList = () => {
     currentDate2.setDate(currentDate2.getDate() + 1);
   const formattedDate = currentDate2.toISOString().substring(0, 10);*/
     }
-    if (currentDate !== lastCheckedDate) {
+    /*if (currentDate !== lastCheckedDate) {
       // Update last checked date
+
       setLastCheckedDate(currentDate);
 
       // Reset objectives
@@ -54,7 +55,7 @@ const ObjectiveList = () => {
       }
       // Refetch the objectives to update the UI
       queryClient.invalidateQueries("objectives");
-    }
+    }*/
   };
   useEffect(() => {
     checkAndResetObjectives();

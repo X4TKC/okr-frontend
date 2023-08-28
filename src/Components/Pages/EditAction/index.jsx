@@ -51,17 +51,17 @@ const EditAction = () => {
         <h2>Edit Action</h2>
 
         <form className="objective-form" onSubmit={handleSubmit}>
-          <label htmlFor="action">Action</label>
           <br />
           <input
+            className="input-action-objective"
             value={action}
             onChange={handleActionChange}
             type="text"
-            placeholder="action"
+            placeholder={data?.data.action}
             id="action"
           ></input>
           <br />
-          <button className="add-button" type="submit">
+          <button className="add-objective-button" type="submit">
             Save action
           </button>
         </form>

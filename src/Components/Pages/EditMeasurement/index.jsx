@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getKeytById, updateKey } from "../../../Services/keyService";
-
+import "./index.css";
 const EditMeasurement = () => {
   const [measurement, setMeasurement] = useState("");
   const navigate = useNavigate();
@@ -53,20 +53,21 @@ const EditMeasurement = () => {
         <h2>Edit Measurement</h2>
 
         <form className="objective-form" onSubmit={handleSubmit}>
-          <label htmlFor="measurement">Measurement</label>
           <br />
           <input
+            className="input-measurement-objective"
             value={measurement}
             onChange={handleMeasurementChange}
             type="measurement"
-            placeholder="e.g.,
-            touching toes, performing a full split"
+            placeholder={data?.data.measurement}
             id="measurement"
             name="measurement"
           ></input>
           <br />
 
-          <button type="submit">Save measurement</button>
+          <button className="add-measurement-button" type="submit">
+            Save measurement
+          </button>
         </form>
       </div>
     </div>

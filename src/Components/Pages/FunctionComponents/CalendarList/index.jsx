@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "./index.css";
 import { Link } from "react-router-dom";
 import KeyResultListFunction from "../KeyResultListFunction";
-
+import ProgressChart from "../../../../Utils/ProgressChart";
 function CalendarList({ data }) {
   const functionData = {
     outputHTML() {
@@ -45,37 +45,57 @@ function CalendarList({ data }) {
             const currentDate = new Date();
             const startDate = new Date(objective.dateStart);
             const endDate = new Date(objective.dateEnd);
-            const totalDays = (endDate - startDate) / (1000 * 60 * 60 * 24); // Total days between start and end dates
-            const daysElapsed = Math.max(
-              0,
-              (currentDate - startDate) / (1000 * 60 * 60 * 24)
-            ); // Days elapsed from start date (bounded at 0)
-            const progressPercentage = objective.progressTracker / totalDays;
+
             return (
               <div key={objective.id} className="objective-item">
-                <h3 className="objective-title-calendar">{objective.name}</h3>
-                <KeyResultListFunction list={objective.keyResultList} />
-                <p>{progressPercentage.toFixed(2) * 100}%</p>
                 <Link
+                  className="objective-title-calendar"
                   to={`/objective-details/${objective.id}`}
-                  className="edit-link"
                 >
-                  Details
+                  {objective.name}
                 </Link>
-                <div className="calendar-container">
-                  <h3 className="calendar-title">Calendar</h3>
-                  <Calendar
-                    key={objective.id}
-                    className={["react-calendar"]}
-                    tileClassName={({ date }) => {
-                      const currentDate = new Date(date);
-                      if (currentDate >= startDate && currentDate <= endDate) {
-                        return "highlight";
-                      }
-                      return "";
-                    }}
-                  />
-                </div>
+                {objective.enable == true ? (
+                  <div>
+                    {objective.state != "Completed" ? (
+                      <KeyResultListFunction list={objective.keyResultList} />
+                    ) : (
+                      <div>
+                        <img
+                          src={require("../../../Images/missionc.png")}
+                          alt="missionc"
+                        />
+                        <p className="calendar-title">{objective.state}</p>
+                      </div>
+                    )}
+
+                    <p>{objective.progressTracker}%</p>
+                    <data></data>
+                    <div className="calendar-container">
+                      <h3 className="calendar-title">Calendar</h3>
+                      <Calendar
+                        key={objective.id}
+                        className={["react-calendar"]}
+                        tileClassName={({ date }) => {
+                          const currentDate = new Date(date);
+                          if (
+                            currentDate >= startDate &&
+                            currentDate <= endDate
+                          ) {
+                            return "highlight";
+                          }
+                          return "";
+                        }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <h3>
+                      <br />
+                      Goal expired!
+                    </h3>
+                  </div>
+                )}
               </div>
             );
           })}

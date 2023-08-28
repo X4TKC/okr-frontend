@@ -53,7 +53,7 @@
 .edit-link-button {
     border-radius: 10px;
     border: 1px solid white;
-    
+    margin: 1px;
     padding: 0.5rem;
     background-color: rgba(255, 255, 255, 0.149);
     color: rgb(255, 255, 255);
@@ -63,12 +63,24 @@
     padding-top: 0.7rem;
     
 }
-.edit-button {
-    margin-left: auto;
-    display: flex;
-    border-radius: 10px;
-    color: white;
-    max-width: fit-content;
+.edit-objective-button {
+  color: #fff;
+  background-color: #007bff00;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  min-height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.edit-objective-button:hover {
+  background-color: #ff7a597e;
 }
 .delete-button{
     margin:1px;

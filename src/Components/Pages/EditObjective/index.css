@@ -1,0 +1,101 @@
+.add-objective-button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .add-objective-button:hover {
+    background-color: #FF7A59;
+  }
+  .cancel-objective-button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .cancel-objective-button:hover {
+    background-color: #b83717f8;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    color: white;
+    margin-bottom: 5px;
+  }
+  
+  .input-edit-objective {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .input-edit-objective::placeholder {
+    color: rgba(255, 255, 255, 0.466);
+  }
+  
+  .delete-objective-button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    min-height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .delete-objective-button:hover {
+    background-color: #a72100f8;
+  }
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the items */
+  }
+  
+  .left-button {
+    flex: 1; /* Takes as much space as available, pushing the next item to the right */
+  }
+  
+  .right-button {
+    text-align: right;
+    margin-bottom: 15px; /* Align the button to the right within its container */
+  }

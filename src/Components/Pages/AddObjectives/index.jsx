@@ -43,6 +43,8 @@ const AddObjective = () => {
       dateStart: startDate,
       dateEnd: endDate,
       userId: session,
+      type: "daily",
+      state: "NotCompleted",
     });
     setName("");
     setEndDate(null);
@@ -63,7 +65,7 @@ const AddObjective = () => {
           Fitness and Achieve a Healthy Body."
         </h3>
       </div>
-      <form className="objective-form" onSubmit={handleSubmit}>
+      <form className="objective-form-add" onSubmit={handleSubmit}>
         <div>
           <input
             className="input-add-objective"
@@ -75,30 +77,32 @@ const AddObjective = () => {
             name="name"
             required
           />
+          <br></br>
           <DatePicker
             className="input-add-objective"
             id="startDate"
-            placeholder="Start Date"
+            placeholderText="Start date"
             selected={startDate}
             onChange={handleStartDateChange}
-            dateFormat="dd/MM/yyyy"
+            dateFormat="yyyy-MM-dd"
             required
             autoComplete="off"
           />
+          <br></br>
           <DatePicker
             className="input-add-objective"
-            placeholder="End Date"
+            placeholderText="End date"
             id="endDate"
             selected={endDate}
             onChange={handleEndDateChange}
-            dateFormat="dd/MM/yyyy"
+            dateFormat="yyyy-MM-dd"
             required
             autoComplete="off"
           />
         </div>
         <div className="m-10 py-10 px-40">
           <button className="add-objective-button" type="submit">
-            Add Objective title
+            Add Objective
           </button>
         </div>
       </form>

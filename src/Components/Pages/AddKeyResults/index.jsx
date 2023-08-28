@@ -5,7 +5,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./index.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddKey } from "../../../Services/keyService";
-import Header from "../../Atoms/Header";
 
 const AddKeyResults = () => {
   const [keyresult, setKeyResult] = useState("");
@@ -28,6 +27,7 @@ const AddKeyResults = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["addKey"] });
       setIsSubmitting(false); // Reset the submission state
+      navigate(`/objective-details/${urlParam.objId}`);
     },
     onError: () => {
       setIsSubmitting(false); // Reset the submission state in case of error

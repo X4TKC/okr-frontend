@@ -17,6 +17,7 @@
     background-color: #8400f0; /* Change to your desired clicked highlight color */
     color: rgb(255, 255, 255); /* Change to your desired clicked text color */
   }
+
     .custom-ul {
     list-style: none; /* Remove the default bullet points */
     display: flex; /* Display list items horizontally */
@@ -99,4 +100,50 @@
     margin-top: 20px;
     transition: background-color 0.3s ease;
     text-align: center;
+  }
+  .chart {
+    flex: 1;
+    margin-bottom: 20px;
+    width: calc(33.33% - 10px); /* Use percentage width */
+    max-width: none; /* Remove max-width property */
+    box-sizing: border-box;
+  }
+  
+  .chart-custom-li {
+    display: flex;
+    flex-wrap: wrap; /* Allow charts to wrap to the next row */
+    justify-content: space-between; /* Distribute charts evenly along the horizontal axis */
+  }
+  .input-add-value {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .input-add-value::placeholder {
+    color: rgba(255, 255, 255, 0.466);
+  }
+  .add-value-button {
+    color: #fff;
+    background-color: #007bff00;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 2px;
+    min-height: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  .add-value-button:hover {
+    background-color: #FF7A59;
   }
