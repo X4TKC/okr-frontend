@@ -6,7 +6,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getKeytById, updateKey } from "../../../Services/keyService";
 import "./index.css";
 
+// Import the useTranslation hook from react-i18next
+import { useTranslation } from "react-i18next";
+
 const AddMeasurement = () => {
+  const { t } = useTranslation(); // Use the translation hook to access translation functions
   const [measurement, setMeasurement] = useState("");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -25,14 +29,11 @@ const AddMeasurement = () => {
 
   const { data, isSuccess, isFetching, isLoading, isError } = useQuery({
     queryKey: ["keyInfo"],
-    queryFn: () => getKeytById(urlParam.keyId), //USEPARAMS
+    queryFn: () => getKeytById(urlParam.keyId),
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Perform any additional validation or processing here
-    // For this example, we'll just log the values to the console
 
     mutation.mutate({
       id: data?.data.id,
@@ -44,38 +45,33 @@ const AddMeasurement = () => {
     });
 
     navigate(`/key-details/${urlParam.keyId}`);
-    // Clear the form fields after submitting
     setMeasurement("");
   };
+
   return (
     <div>
       <div className="auth-form-container-add-measurement">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-        <h2 className="section-title">Defining the Key Measurement</h2>
+        <h2 className="section-title">{t("definingTheKeyMeasurement")}</h2>
         <div className="instructions definition">
           <label className="instruction-label" htmlFor="keyresult">
-            Remember to:
+            {t("rememberTo")}
           </label>
           <h3 className="instruction-text" htmlFor="action">
-            Determine how you will track your progress for each key result. For
-            example:
+            {t("determineHowYouWillTrack")}
           </h3>
           <ul className="instruction-list">
             <li className="keyresult-details-remember-to">
-              Track body fat percentage monthly using a body composition
-              analysis method.
+              {t("trackBodyFatPercentage")}
             </li>
             <li className="keyresult-details-remember-to">
-              Monitor distance, time, and heart rate during cardio sessions to
-              measure improvements in cardiovascular endurance.
+              {t("monitorDistanceTimeHeartRate")}
             </li>
             <li className="keyresult-details-remember-to">
-              Keep a record of the weight and repetitions for strength training
-              exercises to track progress.
+              {t("keepARecordOfTheWeight")}
             </li>
             <li className="keyresult-details-remember-to">
-              Set specific flexibility goals (e.g., touching toes, performing a
-              full split) and track your progress over time.
+              {t("setSpecificFlexibilityGoals")}
             </li>
           </ul>
         </div>
@@ -84,16 +80,16 @@ const AddMeasurement = () => {
             className="input-measurement-defining"
             value={measurement}
             onChange={handleMeasurementChange}
-            type="text" /* Corrected attribute value */
-            placeholder="Measurement"
+            type="text"
+            placeholder={t("measurementvar")}
             id="measurement"
             name="measurement"
           />
           <br />
-          <br></br>
+          <br />
 
           <button className="add-measurement-button" type="submit">
-            Add measurement
+            {t("addMeasurement")}
           </button>
         </form>
       </div>

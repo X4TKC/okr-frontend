@@ -7,8 +7,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addObjective } from "../../../Services/objectiveService";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useSessionContext } from "../../../App";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const AddObjective = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
+
   const { session } = useSessionContext();
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState(null);
@@ -55,15 +58,10 @@ const AddObjective = () => {
   return (
     <div className="auth-form-container">
       <ArrowBackIcon onClick={() => navigate(-1)} />
-      <h2 className="description-text">
-        Define your objective and set the target date range for achievement.
-      </h2>
+      <h2 className="description-text">{t("defineObjective")}</h2>
       <div className="objective-item definition">
-        <label className="label-text">Remember to:</label>
-        <h3 className="objective-remember-to">
-          Clearly state your personal goal. For example, "Improve Physical
-          Fitness and Achieve a Healthy Body."
-        </h3>
+        <label className="label-text">{t("rememberTo")}</label>
+        <h3 className="objective-remember-to">{t("clearlyStateGoal")}</h3>
       </div>
       <form className="objective-form-add" onSubmit={handleSubmit}>
         <div>
@@ -72,26 +70,26 @@ const AddObjective = () => {
             value={name}
             onChange={handleNameChange}
             type="text"
-            placeholder="Name"
+            placeholder={t("namePlaceholder")}
             id="name"
             name="name"
             required
           />
-          <br></br>
+          <br />
           <DatePicker
             className="input-add-objective"
             id="startDate"
-            placeholderText="Start date"
+            placeholderText={t("startDatePlaceholder")}
             selected={startDate}
             onChange={handleStartDateChange}
             dateFormat="yyyy-MM-dd"
             required
             autoComplete="off"
           />
-          <br></br>
+          <br />
           <DatePicker
             className="input-add-objective"
-            placeholderText="End date"
+            placeholderText={t("endDatePlaceholder")}
             id="endDate"
             selected={endDate}
             onChange={handleEndDateChange}
@@ -102,7 +100,7 @@ const AddObjective = () => {
         </div>
         <div className="m-10 py-10 px-40">
           <button className="add-objective-button" type="submit">
-            Add Objective
+            {t("addObjectiveButton")}
           </button>
         </div>
       </form>

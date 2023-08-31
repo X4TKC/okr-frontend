@@ -5,13 +5,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getKeytById, updateKey } from "../../../Services/keyService";
-
+import { useTranslation } from "react-i18next"; // Import useTranslation
 const EditAction = () => {
   const [action, setAction] = useState("");
   const queryClient = useQueryClient();
   const urlParam = useParams();
   const navigate = useNavigate();
-
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
   const handleActionChange = (event) => {
     setAction(event.target.value);
   };
@@ -48,7 +48,7 @@ const EditAction = () => {
     <div>
       <div className="auth-form-container">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-        <h2>Edit Action</h2>
+        <h2>{t("editAction")}</h2>
 
         <form className="objective-form" onSubmit={handleSubmit}>
           <br />
@@ -62,7 +62,7 @@ const EditAction = () => {
           ></input>
           <br />
           <button className="add-objective-button" type="submit">
-            Save action
+            {t("saveAction")}
           </button>
         </form>
       </div>

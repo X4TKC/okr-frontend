@@ -9,7 +9,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getKeytById } from "../../../Services/keyService";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteKey } from "../../../Services/keyService";
+import { useTranslation } from "react-i18next"; // Import useTranslation
+
 const KeyDetails = ({ keyInfo }) => {
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
+
   const navigate = useNavigate();
   const urlParam = useParams();
   const queryClient = useQueryClient();
@@ -17,12 +21,14 @@ const KeyDetails = ({ keyInfo }) => {
     queryKey: ["objective"],
     queryFn: () => getKeytById(urlParam.id),
   });
+
   const handleDelete = () => {
-    if (window.confirm("Are you sure you wish to delete this item?")) {
+    if (window.confirm(t("deleteItemConfirmation"))) {
       deleteKey(urlParam.id);
       navigate(-1);
     }
   };
+
   return (
     <div className="auth-form-container-key-details">
       <div className="top-buttons">
@@ -35,19 +41,17 @@ const KeyDetails = ({ keyInfo }) => {
         </div>
         <div className="right-button">
           <button onClick={handleDelete} className="delete-objective-button">
-            Delete
+            {t("deleteButton")}
           </button>
         </div>
       </div>
-      <h2 className="description-text-keyresult">
-        Here is the details of your key:
-      </h2>
+      <h2 className="description-text-keyresult">{t("detailsOfYourKey")}</h2>
       <div className="keyresult-item-details definition-keyresult-details">
-        <label className="label-text-keyresult-details">Remember that:</label>
+        <label className="label-text-keyresult-details">
+          {t("rememberThat")}
+        </label>
         <h3 className="keyresult-details-remember-to">
-          For this method to work, we need to have both variables set up. It is
-          important that you know how to measure your key result - understanding
-          what is "key" to achieving your goal.
+          {t("forThisMethodToWork")}
         </h3>
       </div>
       <div className="keyresult-details">
@@ -58,7 +62,9 @@ const KeyDetails = ({ keyInfo }) => {
         {isSuccess && data?.data.action && (
           <div>
             <div className="key-edit-action-measurement">
-              <h4 className="keyresult-description-details-title">Action:</h4>
+              <h4 className="keyresult-description-details-title">
+                {t("action")}
+              </h4>
               <EditIcon
                 onClick={() => navigate(`/edit-action/${data?.data.id}`)}
                 className="edit-icon"
@@ -76,7 +82,7 @@ const KeyDetails = ({ keyInfo }) => {
               className="add-attributes-button"
               onClick={() => navigate(`/add-action/${data?.data.id}`)}
             >
-              Add a new action
+              {t("addNewAction")}
             </button>
           </div>
         )}
@@ -85,7 +91,7 @@ const KeyDetails = ({ keyInfo }) => {
           <div>
             <div className="key-edit-action-measurement">
               <h4 className="keyresult-description-details-title">
-                Measurement:
+                {t("measurement")}
               </h4>
               <EditIcon
                 onClick={() => navigate(`/edit-measurement/${data?.data.id}`)}
@@ -105,7 +111,7 @@ const KeyDetails = ({ keyInfo }) => {
               onClick={() => navigate(`/add-measurement/${data?.data.id}`)}
               className="add-attributes-button"
             >
-              Add a new measurement
+              {t("addNewMeasurement")}
             </button>
           </div>
         )}

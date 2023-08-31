@@ -6,7 +6,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getKeytById, updateKey } from "../../../Services/keyService";
 
+// Import the useTranslation hook from react-i18next
+import { useTranslation } from "react-i18next";
+
 const AddAction = () => {
+  const { t } = useTranslation(); // Use the translation hook to access translation functions
   const [action, setAction] = useState("");
   const queryClient = useQueryClient();
   const urlParam = useParams();
@@ -48,34 +52,29 @@ const AddAction = () => {
     <div>
       <div className="auth-form-container-add-action">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-        <h2 className="section-title">Defining the Key Action</h2>
+        <h2 className="section-title">{t("definingTheKeyAction")}</h2>
         <div className="instructions definition">
           <label className="instruction-label" htmlFor="keyresult">
-            Remember to:
+            {t("rememberTo")}
           </label>
           <h3 className="instruction-text" htmlFor="action">
-            Identify the actions you need to take to achieve each key result.
+            {t("identifyTheActions")}
           </h3>
         </div>
         <div className="instructions definition">
-          <label className="instruction-label">For example:</label>
+          <label className="instruction-label">{t("forExample")}:</label>
           <ul className="instruction-text">
             <li className="keyresult-details-remember-to">
-              Follow a balanced diet and engage in regular physical activity to
-              reduce body fat percentage.
+              {t("balancedDiet")}
             </li>
             <li className="keyresult-details-remember-to">
-              Engage in aerobic exercises (running, cycling, swimming) for at
-              least 30 minutes, five times a week to increase cardiovascular
-              endurance.
+              {t("aerobicExercises")}
             </li>
             <li className="keyresult-details-remember-to">
-              Incorporate strength training exercises into your routine to
-              improve strength and muscle tone.
+              {t("strengthTraining")}
             </li>
             <li className="keyresult-details-remember-to">
-              Include regular stretching exercises and mobility drills to
-              enhance flexibility and mobility.
+              {t("stretchingExercises")}
             </li>
           </ul>
         </div>
@@ -85,12 +84,12 @@ const AddAction = () => {
             value={action}
             onChange={handleActionChange}
             type="text"
-            placeholder="Action"
+            placeholder={t("actionvar")}
             id="action"
           ></input>
           <br />
           <button className="add-action-button" type="submit">
-            Add Action
+            {t("addAction")}
           </button>
         </form>
       </div>

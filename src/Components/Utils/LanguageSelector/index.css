@@ -1,0 +1,56 @@
+.button-auth {
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 15px;
+  }
+  nav .button-auth:hover {
+    background-color: #FFE8BC;
+    color: #2D3E50;
+  }
+  nav .email-text {
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 15px;
+  }
+  .nav-item-ln {
+    display: inline-block;
+  }
+  
+  .nav-link-ln {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+  
+  .nav-link-ln:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Lighten the background color on hover */
+    color: #fff;
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .navbar {
+      margin-top: 10px;
+    }
+  }

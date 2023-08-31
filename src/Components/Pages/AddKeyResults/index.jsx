@@ -5,11 +5,14 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./index.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddKey } from "../../../Services/keyService";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const AddKeyResults = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
+
   const [keyresult, setKeyResult] = useState("");
   const [objId, setObjId] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Track the submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const urlParam = useParams();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -26,18 +29,18 @@ const AddKeyResults = () => {
     mutationFn: AddKey,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["addKey"] });
-      setIsSubmitting(false); // Reset the submission state
+      setIsSubmitting(false);
       navigate(`/objective-details/${urlParam.objId}`);
     },
     onError: () => {
-      setIsSubmitting(false); // Reset the submission state in case of error
+      setIsSubmitting(false);
       console.log(keyresult, objId);
     },
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitting(true); // Set submission state to true
+    setIsSubmitting(true);
     mutation.mutate({
       description: keyresult,
       objectiveId: objId,
@@ -50,29 +53,26 @@ const AddKeyResults = () => {
     <div>
       <div className="auth-form-container">
         <ArrowBackIcon onClick={() => navigate(-1)}></ArrowBackIcon>
-        <h2 className="description-text">
-          Here we are defining the keys of your objective
-        </h2>
+        <h2 className="description-text">{t("defineKeysOfObjective")}</h2>
         <div className="keyresult-item-details definition-keyresult-details">
           <label className="label-text-keyresult-details" htmlFor="keyresult">
-            Remember to:
+            {t("rememberTo")}
           </label>
           <h3 className="keyresult-details-remember-to">
-            Determine specific and measurable outcomes that will indicate
-            progress toward your objective. For example:
+            {t("determineOutcomes")}
           </h3>
           <ul className="keyresult-examples">
             <li className="keyresult-details-remember-to">
-              Reduce body fat percentage by 5%
+              {t("reduceBodyFat")}
             </li>
             <li className="keyresult-details-remember-to">
-              Increase cardiovascular endurance
+              {t("increaseCardiovascularEndurance")}
             </li>
             <li className="keyresult-details-remember-to">
-              Improve strength and muscle tone
+              {t("improveStrengthAndMuscleTone")}
             </li>
             <li className="keyresult-details-remember-to">
-              Enhance flexibility and mobility
+              {t("enhanceFlexibilityAndMobility")}
             </li>
           </ul>
         </div>
@@ -84,7 +84,7 @@ const AddKeyResults = () => {
             value={keyresult}
             onChange={handleKeyResultChange}
             type="text"
-            placeholder="Key Result"
+            placeholder={t("keyResultPlaceholder")}
             id="keyresult"
             name="keyresult"
             required
@@ -94,9 +94,9 @@ const AddKeyResults = () => {
             <button
               className="add-key-result-button"
               type="submit"
-              disabled={isSubmitting} // Disable the button during submission
+              disabled={isSubmitting}
             >
-              {isSubmitting ? "Adding..." : "Add Key Result"}
+              {isSubmitting ? t("addingKeyResult") : t("addKeyResultButton")}
             </button>
           </div>
         </form>

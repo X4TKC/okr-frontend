@@ -9,7 +9,9 @@ import {
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import "./index.css";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 const EditObjectiveForm = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
   const [name, setName] = useState("");
   const [dateStart, setDateStart] = useState("");
   const [dateEnd, setDateEnd] = useState("");
@@ -32,7 +34,6 @@ const EditObjectiveForm = () => {
   useEffect(() => {
     // Update the form fields with the objective values when it changes
     setName(data?.data.name);
-
     setDateStart(data?.data.dateStart.substring(0, 10));
     setDateEnd(data?.data.dateEnd.substring(0, 10));
   }, [data]);
@@ -51,9 +52,7 @@ const EditObjectiveForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      window.confirm("Are you sure you want to save changes to this objective?")
-    ) {
+    if (window.confirm(t("confirmSaveChanges"))) {
       mutation.mutate({
         id: urlParam.id,
         name: name,
@@ -65,9 +64,7 @@ const EditObjectiveForm = () => {
   };
 
   const handleDelete = () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this objective?"
-    );
+    const confirmDelete = window.confirm(t("confirmDeleteObjective"));
     if (confirmDelete) {
       deleteObjective(urlParam.id);
       navigate(`/`);
@@ -82,63 +79,63 @@ const EditObjectiveForm = () => {
         </div>
         <div className="right-button">
           <button onClick={handleDelete} className="delete-objective-button">
-            Delete
+            {t("deleteButton")}
           </button>
         </div>
       </div>
-      <h2>Edit Objective</h2>
+      <h2>{t("editObjective")}</h2>
       <br></br>
       <form className="objective-form" onSubmit={handleSubmit}>
         <div className="input-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{t("name")}</label>
 
           <input
             className="input-edit-objective"
             value={name}
             onChange={handleNameChange}
             type="name"
-            placeholder="name"
+            placeholder={t("name")}
             id="name"
             name="name"
             required
           ></input>
         </div>
         <div className="input-group">
-          <label htmlFor="description">Start Date</label>
+          <label htmlFor="description">{t("startDate")}</label>
           <input
             className="input-edit-objective"
             value={dateStart}
             onChange={handleDateStartChange}
             type="date"
-            placeholder="Start Date"
+            placeholder={t("startDate")}
             id="startDate"
             name="startDate"
             required
           ></input>
         </div>
         <div className="input-group">
-          <label htmlFor="date">End Date</label>
+          <label htmlFor="date">{t("endDate")}</label>
 
           <input
             className="input-edit-objective"
             value={dateEnd}
             onChange={handleDateEndChange}
             type="date"
-            placeholder="End Date"
+            placeholder={t("endDate")}
             id="endDate"
             name="endDate"
             required
           ></input>
         </div>
         <button className="add-objective-button" type="submit">
-          Save Changes
+          {t("saveChanges")}
         </button>
         <button
           className="cancel-objective-button"
           type="button"
           onClick={() => navigate(-1)}
         >
-          Cancel
+          {t("cancel")}
         </button>
       </form>
     </div>

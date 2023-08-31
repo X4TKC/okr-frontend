@@ -1,0 +1,62 @@
+/* index.css or App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  background-color: #2D3E50; /* Use background-color property for the color */
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif; /* Apply the Roboto font to the header */
+  color: #fff; /* Set the text color to white for better readability on the gradient background */
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff; /* Set the text color for the logo to white */
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Lighten the background color on hover */
+  color: #fff;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .navbar {
+    margin-top: 10px;
+  }
+}

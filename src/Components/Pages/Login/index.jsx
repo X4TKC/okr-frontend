@@ -6,7 +6,13 @@ import "./index.css";
 import { getUserByEmail } from "../../../Services/userService";
 import { useQuery } from "@tanstack/react-query";
 import { useSessionContext } from "../../../App";
+import { useTranslation } from "react-i18next"; // Import useTranslation
+import HeaderLogin from "../../Atoms/HeaderLogin";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Add this line
+
 export const Login = (props) => {
+  const { t } = useTranslation(); // Initialize the translation hook
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const { session, setSession } = useSessionContext();
@@ -16,57 +22,74 @@ export const Login = (props) => {
     queryFn: () => getUserByEmail(email),
     enabled: !!email,
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, pass)
       .then((useCredential) => {
         setSession(data?.id);
-        {
-          isError && <p>User not found</p>;
+
+        if (isError) {
+          <p>{t("loginUserNotFound")}</p>;
         }
-        {
-          isLoading && console.log("loading");
-          <p>Loading</p>;
+
+        if (isLoading) {
+          console.log("loading");
+          <p>{t("loginLoading")}</p>;
         }
-        {
-          isSuccess && navigate(`/`);
+
+        if (isSuccess) {
+          navigate(`/`);
         }
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Error: " + error.message, {
+          position: "top-right",
+          autoClose: 5000, // Close the notification after 5 seconds
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       });
   };
+
   return (
-    <div className="auth-form-container">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          className="input-login"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="youremail@gmail.com"
-          id="email"
-          name="email"
-        ></input>
-        <label htmlFor="password">Password</label>
-        <input
-          className="input-login"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-          type="password"
-          placeholder="*******"
-          id="password"
-          name="password"
-        ></input>
-        <button className="button" type="submit">
-          Log In
+    <div>
+      {" "}
+      <HeaderLogin />
+      <div className="auth-form-container">
+        <h2>{t("loginTitle")}</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="email">{t("loginEmailLabel")}</label>
+          <input
+            className="input-login"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            placeholder={t("loginEmailPlaceholder")}
+            id="email"
+            name="email"
+          ></input>
+          <label htmlFor="password">{t("loginPasswordLabel")}</label>
+          <input
+            className="input-login"
+            value={pass}
+            onChange={(e) => setPass(e.target.value)}
+            type="password"
+            placeholder={t("loginPasswordPlaceholder")}
+            id="password"
+            name="password"
+          ></input>
+          <button className="button" type="submit">
+            {t("loginButton")}
+          </button>
+        </form>
+        <button className="link-btn" onClick={() => navigate("/signup")}>
+          {t("loginRegisterLink")}
         </button>
-      </form>
-      <button className="link-btn" onClick={() => navigate("/signup")}>
-        Don't have an account? Register here.
-      </button>
+      </div>
     </div>
   );
 };

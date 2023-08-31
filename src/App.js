@@ -15,7 +15,8 @@ import { User } from "./Components/Pages/Users";
 import EditAction from "./Components/Pages/EditAction";
 import EditMeasurement from "./Components/Pages/EditMeasurement";
 import Session from "./Components/Session";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   useQuery,
   useMutation,
@@ -35,6 +36,7 @@ function App() {
   }
   return (
     <SessionContext.Provider value={{ session, setSession, clearSession }}>
+      <ToastContainer />
     <QueryClientProvider client={queryClient} >
       <BrowserRouter>
           <div className="App">

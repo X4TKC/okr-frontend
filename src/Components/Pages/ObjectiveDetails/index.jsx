@@ -8,8 +8,11 @@ import {
   getObjectiveById,
 } from "../../../Services/objectiveService";
 import { getKeys } from "../../../Services/keyService";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const ObjectiveDetails = () => {
+  const { t } = useTranslation(); // Use the useTranslation hook to access translations
+
   const navigate = useNavigate();
   const urlParam = useParams();
 
@@ -39,19 +42,18 @@ const ObjectiveDetails = () => {
             to={`/edit-objective/${urlParam.id}`}
             className="edit-objective-button"
           >
-            Edit Objective
+            {t("editObjectiveButton")}
           </Link>
         </div>
       </div>
-      <h2 className="description-text">Objective Details</h2>
+      <h2 className="description-text">{t("objectiveDetails")}</h2>
       <div className="objective-item-details definition-details-objective">
-        <label className="label-text-details">Remember that:</label>
+        <label className="label-text-details">{t("rememberThat")}</label>
         <h3 className="objective-details-remember-to">
-          Each Key result has two important attributes: action and measurement.
-          Don't forget to add those.
+          {t("keyResultAttributes")}
         </h3>
       </div>
-      <h2 className="description-text">List of KeyResult</h2>
+      <h2 className="description-text">{t("listOfKeyResult")}</h2>
       <div className="objective-details">
         <div className="key-section">
           {isSuccess && data?.data && data?.data.length > 0 ? (
@@ -69,18 +71,17 @@ const ObjectiveDetails = () => {
           ) : (
             <div>
               <div className="no-keyresults-text">
-                No Key Results available for this objective. Please add as many
-                as needed. <br></br>
-                <br></br>
+                {t("noKeyResultsAvailable")}
+                <br />
+                <br />
                 <div>
-                  <img src={require("../../Images/key.png")} />
+                  <img src={require("../../Images/key.png")} alt="Key Result" />
                   <br />
                   <h3 className="instructions-h3-title">
-                    This section is where all your Key Results will appear.
+                    {t("keyResultsSectionDescription1")}
                   </h3>
-
                   <h3 className="instructions-h3-title">
-                    Add new Key Results using the Add New Key Result button!
+                    {t("keyResultsSectionDescription2")}
                   </h3>
                 </div>
               </div>
@@ -91,7 +92,7 @@ const ObjectiveDetails = () => {
           className="add-key-result-button"
           onClick={() => navigate(`/add-keyresult/${urlParam.id}`)}
         >
-          Add New Key Result
+          {t("addNewKeyResultButton")}
         </button>
       </div>
     </div>

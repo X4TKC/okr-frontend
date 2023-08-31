@@ -4,7 +4,9 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import KeyResultListFunction from "../KeyResultListFunction";
 import ProgressChart from "../../../../Utils/ProgressChart";
+import { useTranslation } from "react-i18next";
 function CalendarList({ data }) {
+  const { t } = useTranslation();
   const functionData = {
     outputHTML() {
       if (data.length === 0) {
@@ -14,12 +16,12 @@ function CalendarList({ data }) {
               <img src={require("../../../Images/star.png")} alt="Star" />
               <br />
               <>
-                This screen is where all your goals will appear
+                {t("welcomeMessage1")}
                 <br />
               </>
               <h3>
                 <br />
-                Add new Goals!.
+                {t("addNewObjective")}
               </h3>
             </div>
             <div>
@@ -31,7 +33,7 @@ function CalendarList({ data }) {
               <br />
               <>
                 <br />
-                This screen is where all your calendar goals will appear
+                {t("calendarDescription")}
                 <br />
               </>
             </div>
@@ -71,7 +73,7 @@ function CalendarList({ data }) {
                     <p>{objective.progressTracker}%</p>
                     <data></data>
                     <div className="calendar-container">
-                      <h3 className="calendar-title">Calendar</h3>
+                      <h3 className="calendar-title">{t("calendarTitle")}</h3>
                       <Calendar
                         key={objective.id}
                         className={["react-calendar"]}
@@ -92,8 +94,12 @@ function CalendarList({ data }) {
                   <div>
                     <h3>
                       <br />
-                      Goal expired!
+                      {t("goalExpired")}
                     </h3>
+                    <img
+                      src={require("../../../Images/F.png")}
+                      alt="missionc"
+                    />
                   </div>
                 )}
               </div>
