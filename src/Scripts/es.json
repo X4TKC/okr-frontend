@@ -96,5 +96,12 @@
   "signupAlreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí.",
   "signupUsernamePlaceholder": "nombredeusuario",
   "signupEmailPlaceholder": "tucorreo@gmail.com",
-  "signupPasswordPlaceholder": "*******"
+  "signupPasswordPlaceholder": "*******",
+  "keyResultsTitle": "Aquí tienes las claves para completar tu objetivo:",
+  "noKeyResultsMessage": "En esta sección aparecerán todos tus Resultados Clave.",
+  "noKeyResultsMessage2": "¡Agrega nuevos Resultados Clave haciendo click en el nombre del objetivo!",
+  "emptyText": "No se proporciona medición ni acción\npor favor completa el Resultado Clave",
+  "submitButtonText": "Enviar",
+  "loadingProgressData": "Cargando datos de progreso...",
+  "submittedValue": "Valor Enviado:"
 }

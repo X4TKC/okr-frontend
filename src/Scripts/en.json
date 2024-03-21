@@ -96,5 +96,12 @@
   "signupAlreadyHaveAccount": "Already have an account? Login here.",
   "signupUsernamePlaceholder": "yourusername",
   "signupEmailPlaceholder": "youremail@gmail.com",
-  "signupPasswordPlaceholder": "*******"
+  "signupPasswordPlaceholder": "*******",
+  "keyResultsTitle": "Here are the keys to complete your goal:",
+  "noKeyResultsMessage": "This section is where all your Key Results will appear.",
+  "noKeyResultsMessage2": "Add new Key Results by clicking the name of the objective!",
+  "emptyText": "No measurement or action provided\nplease complete the Key Result",
+  "submitButtonText": "Submit",
+  "loadingProgressData": "Loading progress data...",
+  "submittedValue": "Submitted Value:"
   }

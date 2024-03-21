@@ -5,6 +5,7 @@ import "./index.css";
 function LanguageSelector() {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    localStorage.setItem("i18nextLng", lng);
   };
 
   return (

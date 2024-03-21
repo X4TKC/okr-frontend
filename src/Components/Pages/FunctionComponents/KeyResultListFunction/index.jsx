@@ -7,7 +7,10 @@ import {
   getAllKeyValueByKeyId,
   getAllKeyValueByObjectiveId,
 } from "../../../../Services/keyvalueService"; // Import your API function
+import { useTranslation } from "react-i18next"; // Import useTranslation
+
 function KeyResultListFunction({ list }) {
+  const { t } = useTranslation(); // Initialize the translation hook
   const [dataVersion, setDataVersion] = useState(0);
   const [inputValues, setInputValues] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -100,34 +103,19 @@ function KeyResultListFunction({ list }) {
 
   const [keyResults, setKeyResults] = useState(list);
 
-  /*  const progressDataTest = [
-    { id: 1, value: 10, day: new Date("2023-06-01") },
-    { id: 2, value: 15, day: new Date("2023-06-02") },
-    { id: 3, value: 25, day: new Date("2023-06-03") },
-    { id: 4, value: 30, day: new Date("2023-06-04") },
-    { id: 5, value: 45, day: new Date("2023-06-05") },
-    { id: 6, value: 60, day: new Date("2023-06-06") },
-  ];*/
-
   return (
     <div className="objective-item">
       {keyResults.length === 0 ? (
         <div>
           <img src={require("../../../Images/key.png")} />
           <br />
-          <h3 className="instructions-h3-title">
-            This section is where all your Key Results will appear.
-          </h3>
+          <h3 className="instructions-h3-title">{t("noKeyResultsMessage")}</h3>
 
-          <h3 className="instructions-h3-title">
-            Add new Key Results using the Details button!
-          </h3>
+          <h3 className="instructions-h3-title">{t("noKeyResultsMessage2")}</h3>
         </div>
       ) : (
         <div>
-          <h3 className="objectives-title">
-            Here are the keys to complete your goal:
-          </h3>
+          <h3 className="objectives-title">{t("keyResultsTitle")}</h3>
           <ul className="custom-ul">
             {keyResults.map((keyResult) => (
               <li
@@ -164,13 +152,7 @@ function KeyResultListFunction({ list }) {
                     )}
                   </div>
                 ) : (
-                  <p className="empty-text">
-                    No measurement or action provided
-                    <small>
-                      {" "}
-                      <br></br>please complete the Key Result{" "}
-                    </small>
-                  </p>
+                  <p className="empty-text">{t("emptyText")}</p>
                 )}
                 <form onSubmit={(e) => handleSubmit(e, keyResult.id)}>
                   <label>
@@ -195,13 +177,15 @@ function KeyResultListFunction({ list }) {
                       type="submit"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      Submit
+                      {t("submitButtonText")}
                     </button>
                   )}
                 </form>
                 {isSubmitted && (
                   <div>
-                    <p>Submitted Value: {inputValues[keyResult.id]}</p>
+                    <p>
+                      {t("submittedValue")} {inputValues[keyResult.id]}
+                    </p>
                   </div>
                 )}
               </li>
@@ -213,7 +197,7 @@ function KeyResultListFunction({ list }) {
         {progressData ? (
           <ProgressChart progressData={progressData} />
         ) : (
-          <p>Loading progress data...</p>
+          <p>{t("loadingProgressData")}</p>
         )}
       </div>
     </div>

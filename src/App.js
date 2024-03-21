@@ -25,6 +25,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import MainPage from "./Components/Pages/MainPage";
+import i18n from "./Scripts/i18n";
 const SessionContext = createContext();
 export const useSessionContext = () => useContext(SessionContext);
 function App() {
@@ -33,6 +34,10 @@ function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const toggleForm =(formName) => {
     setCurrentForm(formName);
+  }
+  const selectedLanguage = localStorage.getItem("i18nextLng");
+  if (selectedLanguage) {
+    i18n.changeLanguage(selectedLanguage);
   }
   return (
     <SessionContext.Provider value={{ session, setSession, clearSession }}>

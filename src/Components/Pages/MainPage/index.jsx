@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../Atoms/Header";
 import ObjectiveList from "../ObjectiveList";
 import Cookies from "js-cookie";
+
 const MainPage = () => {
   const { session, setSession, clearSession } = useSessionContext();
   const navigate = useNavigate();
